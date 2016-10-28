@@ -77,7 +77,7 @@ finally, it help you to generate all 2x,3x images accordinglly:
 
 # Examples
 
-the example folder has an project which already configured. So you can also use it as a reference.
+the **example** folder has an project which already configured. So you can also use it as a reference.
 
 
 
