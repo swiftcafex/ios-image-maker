@@ -71,9 +71,13 @@ Generating: sourceImages/icon/icon.jpg to image-example/Assets.xcassets/Icon.app
 
 finally, it help you to generate all 2x,3x images accordinglly:
 
+![](https://github.com/swiftcafex/ios-image-maker/blob/master/resources/1.png)
 
+![](https://github.com/swiftcafex/ios-image-maker/blob/master/resources/2.png)
 
+# Examples
 
+the example folder has an project which already configured. So you can also use it as a reference.
 
 
 
