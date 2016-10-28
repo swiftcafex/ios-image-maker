@@ -9,15 +9,18 @@ function Config() {
 
 	this.sourcePath = "";
 	this.assetPath = "";
+	this.configPath = "image-config.json";
 
 }
 
 Config.prototype.readfile = function() {
 	
+	var that = this;
+
 	return new PromiseKit(function(fullfill, reject){
 
 		Console.log("Reading config file...");
-		fs.readFile("config.json", "utf-8", function(err, data){
+		fs.readFile(that.configPath, "utf-8", function(err, data){
 			
 			if(err) {
 				Console.log("Read failed");
