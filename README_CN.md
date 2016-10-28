@@ -1,13 +1,12 @@
 # ios-image-maker
-Automatic generate all 1x, 2x and 3x images from one source image.
 
-This document also has [中文版本](https://github.com/swiftcafex/ios-image-maker/blob/master/README_CN.md).
+从一张原始图片自动生成 1x,2x 和 3x 图片。
 
-# Installation
+# 安装
 
-* you need install NodeJS first. 
+* 你需要首先安装 NodeJS 环境：
 
-You can visit [https://nodejs.org](https://nodejs.org) or install it via [Homebrew](http://brew.sh/):
+你可以访问 [https://nodejs.org](https://nodejs.org) 网站或者通过[Homebrew](http://brew.sh/) 来安装:
 
 ```
 brew install node
@@ -15,20 +14,20 @@ brew install node
 
 * ImageMagick 
 
-You also need install [ImageMagick](http://www.imagemagick.org/script/index.php) to generate images for iOS projects. You can also install it by [Homebrew](http://brew.sh/):
+你还需要安装 [ImageMagick](http://www.imagemagick.org/script/index.php) 组件，用来处理图片生成。 同样也可以通过 [Homebrew](http://brew.sh/) 来安装:
 
 ```
 brew install imagemagick
 ```
 
-* Finally, install **ios-image-maker** by **npm**:
+* 最后，通过 **npm** 来安装 **ios-image-maker**：
 
 ```
 npm install -g ios-image-maker
 ```
-#Usage
+# 使用
 
-In your iOS project folder, create a file named `image-config.json` like this:
+可以在你的 iOS 项目根目录中， 创建一个名为 `image-config.json` 的配置文件：
 
 ```
 {
@@ -48,16 +47,16 @@ In your iOS project folder, create a file named `image-config.json` like this:
 	]
 }
 ```
-It defines how to generate images. `type` can be assets or icon, which represent asset images and app icon respectively. `sourcePath` and `destPath` defines 
-where the source image and the generated images.
 
-After created this `image-config` file. you can run `ios-image` command in the same folder:
+它定义了如何生成图片。`type` 可以是 `assets` 或 `icon` 分别对应项目中的图片资源和图标文件。 `sourcePath` 和 `destPath` 定义了在哪里找到原始图片以及在哪里存放生成后的图片。
+
+创建完 `image-config.json` 文件后， 你可以在同级目录中运行 `ios-image` 命令：
 
 ```
 $ ios-image
 ```
 
-then you will receive console output like this:
+这样，你应该可以在控制台上面看到类似这样的输出：
 
 ```
 Generating: sourceImages/assets/file.jpg to image-example/Assets.xcassets/file.imageset/file@3x.jpg
@@ -71,15 +70,15 @@ Generating: sourceImages/icon/icon.jpg to image-example/Assets.xcassets/Icon.app
 Generating: sourceImages/icon/icon.jpg to image-example/Assets.xcassets/Icon.appiconset/Icon-App-29x29@1x.png
 ```
 
-finally, it help you to generate all 2x,3x images accordinglly:
+运行完毕后， 就会帮你生成 iOS 项目需要的 1x,2x 和 3x 各种尺寸的图片了：
 
 ![](https://github.com/swiftcafex/ios-image-maker/blob/master/resources/1.png)
 
 ![](https://github.com/swiftcafex/ios-image-maker/blob/master/resources/2.png)
 
-# Examples
+# 示例
 
-the **example** folder has an project which already configured. So you can also use it as a reference.
+**example** 目录中包含了一个示例项目， 你可以作为一个使用参考。
 
 
 
