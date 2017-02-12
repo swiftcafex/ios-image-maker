@@ -5,8 +5,12 @@
 var fs = require("fs.extra");
 var PromiseKit = require("promise");
 var path = require("path");
-var gm = require("gm");
 var Console = require("./console");
+var sizeOf = require('image-size');
+var lwip = require('lwip');
+var queue = require('queue');
+var imageQueue = queue();
+imageQueue.autostart = true;
 
 function ImageUtil() {
 
@@ -104,6 +108,31 @@ ImageUtil.prototype.generateContentJSON = function(assetFolder, images) {
 	});
 
 };
+
+ImageUtil.prototype.resizeAndSaveImage = function(imagePath, destWidth, destHeight, destPath) {
+
+	imageQueue.push(function(cb){
+		
+		lwip.open(imagePath, function(err, image){
+		
+		image.batch()
+		.resize(destWidth, destHeight)
+		.writeFile(destPath, function(err){
+
+			if(err) {
+				Console.log(err);
+			}
+			Console.log("Generating: " + imagePath + " to " + destPath);
+			cb();
+
+		});					
+
+	});
+
+	})
+	
+
+}
 
 ImageUtil.prototype.generateAndCopyIconImage = function(sourceImagePath, assetFolder) {
 
@@ -255,41 +284,18 @@ ImageUtil.prototype.generateAndCopyIconImage = function(sourceImagePath, assetFo
 	    }
 	];
 
+	var self = this;
+	// resizeAndSaveImage
+	images.forEach(function(item){
 
-	gm(sourceImagePath).size(function(err){
+		var destSizeArr = item.size.split("x");
+		var scale = parseInt(item.scale);				
+		var destWidth =  destSizeArr[0] * scale;
+		var fileName = item.filename;
+		var destPath = path.join(assetFolder, fileName);
 
-		if(err) {
-
-			console.log(err);
-
-		} else {
-
-			images.forEach(function(item){
-
-				var destSizeArr = item.size.split("x");
-				var scale = parseInt(item.scale);				
-				var destWidth =  destSizeArr[0] * scale;
-				var fileName = item.filename;
-
-				var destPath = path.join(assetFolder, fileName);
-				Console.log("Generating: " + sourceImagePath + " to " + destPath);
-				gm(sourceImagePath).resize(destWidth, destWidth).write(destPath, function(err){
-					
-					if(err) {
-						Console.log(err);
-					}
-				});
-				// console.log(destPath);
-				// console.log(destSizeArr);
-				
-			});
-
-			// gm(sourceImagePath).write(filePath3X, function(){});
-			// gm(sourceImagePath).resize(width / 3.0 * 2.0, height / 3.0 * 2.0).write(filePath2X, function(){});
-			// gm(sourceImagePath).resize(width / 3.0, height / 3.0).write(filePath1X, function(){});
-
-		}
-
+		self.resizeAndSaveImage(sourceImagePath, destWidth, destWidth, destPath);		
+			
 	});
 
 
@@ -321,28 +327,14 @@ ImageUtil.prototype.generateAndCopyImage = function(sourceImagePath, assetFolder
 	    }
 	];
 
+	
+	var imageSize = sizeOf(sourceImagePath);
+	var width = imageSize.width;
+	var height = imageSize.height;
 
-
-	gm(sourceImagePath).size(function(err, value){
-
-		if(err) {
-
-			console.log(err);
-
-		} else {
-
-			var width = value.width;
-			var height = value.height;
-			Console.log("Generating: " + sourceImagePath + " to " + filePath3X);
-			gm(sourceImagePath).write(filePath3X, function(){});
-			Console.log("Generating: " + sourceImagePath + " to " + filePath2X);
-			gm(sourceImagePath).resize(width / 3.0 * 2.0, height / 3.0 * 2.0).write(filePath2X, function(){});
-			Console.log("Generating: " + sourceImagePath + " to " + filePath1X);
-			gm(sourceImagePath).resize(width / 3.0, height / 3.0).write(filePath1X, function(){});
-
-		}
-
-	});
+	this.resizeAndSaveImage(sourceImagePath, width, height, filePath3X);		
+	this.resizeAndSaveImage(sourceImagePath, width / 3.0 * 2.0, height / 3.0 * 2.0, filePath2X);			
+	this.resizeAndSaveImage(sourceImagePath, width / 3.0, height / 3.0, filePath1X);				
 
 	return this.generateContentJSON(assetFolder, images);	
 
@@ -354,24 +346,13 @@ ImageUtil.prototype.copyImage = function(sourceImagePath, destFolder) {
 	var filePath2X = path.join(destFolder, path.basename(sourceImagePath, path.extname(sourceImagePath)) + "@2x" + path.extname(sourceImagePath));
 	var filePath1X = path.join(destFolder, path.basename(sourceImagePath, path.extname(sourceImagePath)) + path.extname(sourceImagePath));
 	
-	gm(sourceImagePath).size(function(err, value){
+	var imageSize = sizeOf(sourceImagePath);
+	var width = imageSize.width;
+	var height = imageSize.height;
 
-		if(err) {
-
-			console.log(err);
-
-		} else {
-
-			var width = value.width;
-			var height = value.height;
-
-			gm(sourceImagePath).write(filePath3X, function(){});
-			gm(sourceImagePath).resize(width / 3.0 * 2.0, height / 3.0 * 2.0).write(filePath2X, function(){});
-			gm(sourceImagePath).resize(width / 3.0, height / 3.0).write(filePath1X, function(){});
-
-		}
-
-	});
+	this.resizeAndSaveImage(sourceImagePath, width, height, filePath3X);		
+	this.resizeAndSaveImage(sourceImagePath, width / 3.0 * 2.0, height / 3.0 * 2.0, filePath2X);			
+	this.resizeAndSaveImage(sourceImagePath, width / 3.0, height / 3.0, filePath1X);				
 
 };
 
@@ -410,13 +391,14 @@ ImageUtil.prototype.generate = function(configItem) {
 				self.generateIconStructure(destPath, configItem.name).then(function(assetFolder){
 
 					self.generateAndCopyIconImage(filePath, assetFolder);
-
+	 
 				});
 
 			}
 			
 
 		});
+
 
 	});
 

@@ -9,7 +9,7 @@ function Config() {
 
 	this.sourcePath = "";
 	this.assetPath = "";
-	this.configPath = "image-config.json";
+	this.configPath = "./image-config.json";
 
 }
 
@@ -19,7 +19,7 @@ Config.prototype.readfile = function() {
 
 	return new PromiseKit(function(fullfill, reject){
 
-		Console.log("Reading config file...");
+		Console.log("Reading config file " + that.configPath + "...");
 		fs.readFile(that.configPath, "utf-8", function(err, data){
 			
 			if(err) {

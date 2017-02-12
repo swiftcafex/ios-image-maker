@@ -7,7 +7,7 @@ var imageutil = require("./imageutil");
 config.init().then(function(configList){	
 
 	configList.forEach(function(item){
-
+		
 		imageutil.generate(item);	
 		
 	});
