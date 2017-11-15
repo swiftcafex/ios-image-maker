@@ -13,23 +13,22 @@ function Config() {
 
 }
 
-Config.prototype.readfile = function() {
+// Read file
+Config.prototype.readFile = function() {
 	
 	var that = this;
 
-	return new PromiseKit(function(fullfill, reject){
+	return new PromiseKit(function(resolve, reject){
 
-		Console.log("Reading config file " + that.configPath + "...");
 		fs.readFile(that.configPath, "utf-8", function(err, data){
 			
 			if(err) {
-				Console.log("Read failed");
+
 				reject(err);
 
 			} else {
 
-				Console.log("Read success");
-				fullfill(data);
+                resolve(data);
 
 			}
 
@@ -39,29 +38,29 @@ Config.prototype.readfile = function() {
 	
 };
 
-Config.prototype.parsefile = function(data) {
+// Parse content of config file.
+Config.prototype.parseFile = function(data) {
 	
-	return new PromiseKit(function(fullfill, reject){
+	return new PromiseKit(function(resolve, reject){
 
 		try {
 
-			Console.log("Parsing config file...");
 			var config = JSON.parse(data);
 			var items = config.items;
 			
 			if(items) {
-				Console.log("Parse success!");
-				fullfill(items);
+
+                resolve(items);
 
 			} else {
-				Console.log("No config items!");
+
 				reject("items parse failed.");
 
 			}
 
 
 		} catch (ex) {
-			Console.log("Parse failed! " + ex);
+
 			reject(ex);
 
 		}
@@ -74,9 +73,9 @@ Config.prototype.parsefile = function(data) {
 Config.prototype.init = function() {
 
 	var self = this;
-	return this.readfile().then(function(data) {
+	return this.readFile().then(function(data) {
 		
-		return self.parsefile(data);
+		return self.parseFile(data);
 
 	});
 

@@ -15,12 +15,16 @@ process.chdir(workingDIR);
 var defaultSourcePath = "./sourceImages";
 var defaultAssetPath = "./sourceImages/assets";
 var defaultIconPath = "./sourceImages/icon";
+var configFile = "./image-config.json";
 
 test.before(async t => {
 
-    var promise = new Promise(function(resolve, reject){
+    fs.unlinkSync(configFile);
+
+    var promise = new Promise(function(resolve){
 
         rmdir(defaultSourcePath, function(){
+
 
             resolve();
 
@@ -36,14 +40,14 @@ test.before(async t => {
 
 test('test init', t => {
 
-    t.false(fs.existsSync("./image-config.js"));
+    t.false(fs.existsSync(configFile));
     t.false(fs.existsSync(defaultAssetPath));
     t.false(fs.existsSync(defaultIconPath));
 
     initFunc(function(){
 
         // default file should be created
-        t.true(fs.existsSync("./image-config.js"));
+        t.true(fs.existsSync(configFile));
         t.true(fs.existsSync(defaultAssetPath));
         t.true(fs.existsSync(defaultIconPath));
 
