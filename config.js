@@ -58,7 +58,6 @@ Config.prototype.parseFile = function(data) {
 
 			}
 
-
 		} catch (ex) {
 
 			reject(ex);

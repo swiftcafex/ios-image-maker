@@ -9,7 +9,7 @@ var fs = require("fs");
 var workingDIR = path.join(__dirname, "_support/test-config");
 process.chdir(workingDIR);
 
-test('Config: readfile', async t => {
+test('Config.readFile', async t => {
 
     var configPath = "./image-config.json";
 
@@ -21,6 +21,46 @@ test('Config: readfile', async t => {
 
         t.is(data, configContent);
 
+
+    });
+
+    t.pass();
+
+});
+
+// {
+//     "items": [
+//     {
+//         "type": "assets",
+//         "sourcePath": "./sourceImages/assets",
+//         "destPath": "./image-example/Assets.xcassets"
+//     },
+//     {
+//         "type": "icon",
+//         "sourcePath": "./sourceImages/icon",
+//         "destPath": "./image-example/Assets.xcassets",
+//         "name": "Icon"
+//     }
+// ]
+// }
+test('Config.parseFile', async t => {
+
+    var configPath = "./image-config.json";
+
+    t.true(fs.existsSync(configPath));
+
+    var configContent = fs.readFileSync(configPath, "utf8");
+
+    await config.parseFile(configContent).then(function(items){
+
+        t.is(items.length, 2);
+        t.is(items[0]['type'], 'assets');
+        t.is(items[0]['sourcePath'], './sourceImages/assets');
+        t.is(items[0]['destPath'], './image-example/Assets.xcassets');
+
+        t.is(items[1]['type'], 'icon');
+        t.is(items[1]['sourcePath'], "./sourceImages/icon");
+        t.is(items[1]['destPath'], "./image-example/Assets.xcassets");
 
     });
 

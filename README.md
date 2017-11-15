@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/swiftcafex/ios-image-maker.svg?branch=master)
+)
 # ios-image-maker
 Automatic generate all 1x, 2x and 3x images from one source image.
 
