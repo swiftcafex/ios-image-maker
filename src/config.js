@@ -27,6 +27,7 @@ Config.prototype.readfile = function() {
 				reject(err);
 
 			} else {
+
 				Console.log("Read success");
 				fullfill(data);
 
