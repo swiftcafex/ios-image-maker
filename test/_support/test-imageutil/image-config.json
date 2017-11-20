@@ -1,0 +1,15 @@
+{
+	"items": [
+		{
+			"type": "assets",
+			"sourcePath": "./sourceImages/assets",
+			"destPath": "./output/Assets.xcassets"
+		},
+		{
+			"type": "icon",
+			"sourcePath": "./sourceImages/icon",
+			"destPath": "./output/Assets.xcassets",
+			"name": "Icon"
+		}
+	]
+}

@@ -2,7 +2,6 @@
 'use strict';
 
 var config = require("./config");
-// var imageutil = require("./imageutil");
 
 var program = require('commander');
 
@@ -21,16 +20,3 @@ if(program.make) {
 
 }
 
-// config.init().then(function(configList){
-//
-// 	configList.forEach(function(item){
-//
-// 		imageutil.generate(item);
-//
-// 	});
-//
-//
-// });
-//
-
-// program.help();

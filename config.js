@@ -2,23 +2,19 @@
 'use strict';
 
 var fs = require("fs");
-var PromiseKit = require("promise");
-var Console = require("./console");
 
 function Config() {
 
-	this.sourcePath = "";
-	this.assetPath = "";
 	this.configPath = "./image-config.json";
 
 }
 
-// Read file
+// Read config file
 Config.prototype.readFile = function() {
 	
 	var that = this;
 
-	return new PromiseKit(function(resolve, reject){
+	return new Promise(function(resolve, reject){
 
 		fs.readFile(that.configPath, "utf-8", function(err, data){
 			
@@ -41,7 +37,7 @@ Config.prototype.readFile = function() {
 // Parse content of config file.
 Config.prototype.parseFile = function(data) {
 	
-	return new PromiseKit(function(resolve, reject){
+	return new Promise(function(resolve, reject){
 
 		try {
 
@@ -75,6 +71,10 @@ Config.prototype.init = function() {
 	return this.readFile().then(function(data) {
 		
 		return self.parseFile(data);
+
+	}).catch(function(err){
+
+		// config file does not exist.
 
 	});
 

@@ -5,12 +5,8 @@
 var fs = require("fs.extra");
 var PromiseKit = require("promise");
 var path = require("path");
-var Console = require("./console");
 var sizeOf = require('image-size');
-var lwip = require('lwip');
 var queue = require('queue');
-var imageQueue = queue();
-imageQueue.autostart = true;
 
 function ImageUtil() {
 
@@ -40,9 +36,9 @@ ImageUtil.prototype.listfolder = function(folderPath) {
 };
 
 
-ImageUtil.prototype.generateIconStructure = function(destPath, assetName) {
+ImageUtil.prototype.generateIconStructure = function(assetPath, assetName) {
 
-	var assetPath = path.join(destPath, assetName) + ".appiconset";	
+	var assetPath = path.join(assetPath, assetName) + ".appiconset";
 	var exists = fs.existsSync(assetPath);
 	
 	if(!exists) {
@@ -58,16 +54,17 @@ ImageUtil.prototype.generateIconStructure = function(destPath, assetName) {
 /**
  * 为指定图片生成 Asset 目录结构
  * 
- * @param  {string} sourcePath 原始路径
+ * @param  {string} sourcePath 原始文件路径
+ * @param {string} assetPath Asset 资源路径
  */
-ImageUtil.prototype.generateStructure = function(sourcePath, assetPath) {
+ImageUtil.prototype.generateAssetStructure = function(sourceFilePath, assetPath) {
 	
-	var assetFolder = path.join(assetPath, path.basename(sourcePath, path.extname(sourcePath))) + ".imageset";
-	var exists = fs.existsSync(assetFolder);
-	
-	if(!exists) {
+	var assetFolder = path.join(assetPath, path.basename(sourceFilePath, path.extname(sourceFilePath))) + ".imageset";
 
-		fs.mkdirSync(assetFolder);
+	if(!fs.existsSync(assetFolder)) {
+
+		// make necessary directory recursively
+		fs.mkdirpSync(assetFolder);
 		
 	}
 
@@ -75,7 +72,25 @@ ImageUtil.prototype.generateStructure = function(sourcePath, assetPath) {
 
 };
 
-ImageUtil.prototype.generateContentJSON = function(assetFolder, images) {
+/**
+ *
+ * Generate Contents.json file for single image,
+ *
+ * @param imageAssetFolder	the full path for the image asset. example: project/Assets.xcassets/cloud.imageset
+ * @param images (optional) the images for this asset. example:  cloud.jpg cloud@2x.jpg cloud@3x.jpg
+ *
+ * if images parameter not provide, generate Contents.json with null images field like this:
+ *
+ * {
+ *  "info": {
+ *    "version": 1,
+ *    "author": "xcode"
+ *  }
+ * }
+ *
+ * @returns {*|Promise}
+ */
+ImageUtil.prototype.generateContentJSON = function(imageAssetFolder, images) {
 
 	return new PromiseKit(function(fullfill, reject) {
 
@@ -88,7 +103,7 @@ ImageUtil.prototype.generateContentJSON = function(assetFolder, images) {
 		};
 
 		var jsonString = JSON.stringify(initialContent, null, 2);
-		var contentPath = path.join(assetFolder, "Contents.json");
+		var contentPath = path.join(imageAssetFolder, "Contents.json");
 
 		fs.writeFile(contentPath, jsonString, function(err){
 
@@ -98,7 +113,7 @@ ImageUtil.prototype.generateContentJSON = function(assetFolder, images) {
 
 			} else {
 
-				fullfill(assetFolder);
+				fullfill(imageAssetFolder);
 
 			}
 
@@ -112,22 +127,24 @@ ImageUtil.prototype.generateContentJSON = function(assetFolder, images) {
 ImageUtil.prototype.resizeAndSaveImage = function(imagePath, destWidth, destHeight, destPath) {
 
 	imageQueue.push(function(cb){
-		
-		lwip.open(imagePath, function(err, image){
-		
-		image.batch()
-		.resize(destWidth, destHeight)
-		.writeFile(destPath, function(err){
 
-			if(err) {
-				Console.log(err);
-			}
-			Console.log("Generating: " + imagePath + " to " + destPath);
-			cb();
 
-		});					
-
-	});
+	// 	lwip.open(imagePath, function(err, image){
+	//
+	// 	image.batch()
+	// 	.resize(destWidth, destHeight)
+	// 	.writeFile(destPath, function(err){
+    //
+	// 		if(err) {
+	// 			Console.log(err);
+	// 		}
+	// 		Console.log("Generating: " + imagePath + " to " + destPath);
+	// 		cb();
+    //
+	// 	});
+    //
+	// });
+		cb();
 
 	})
 	
@@ -298,17 +315,30 @@ ImageUtil.prototype.generateAndCopyIconImage = function(sourceImagePath, assetFo
 			
 	});
 
-
 	return this.generateContentJSON(assetFolder, images);
 
 };
 
-ImageUtil.prototype.generateAndCopyImage = function(sourceImagePath, assetFolder) {
-	
-	var filePath3X = path.join(assetFolder, path.basename(sourceImagePath, path.extname(sourceImagePath)) + "@3x" + path.extname(sourceImagePath));
-	var filePath2X = path.join(assetFolder, path.basename(sourceImagePath, path.extname(sourceImagePath)) + "@2x" + path.extname(sourceImagePath));
-	var filePath1X = path.join(assetFolder, path.basename(sourceImagePath, path.extname(sourceImagePath)) + path.extname(sourceImagePath));
-	
+/**
+ *
+ * 生成 asset 路径
+ *
+ * @param sourceImagePath
+ * @param assetFolder
+ */
+ImageUtil.prototype.generateAssetPath = function(sourceImagePath, imageSetFolderPath, scale){
+
+	if(!scale) scale = "";
+    return path.join(imageSetFolderPath, path.basename(sourceImagePath, path.extname(sourceImagePath)) + scale + path.extname(sourceImagePath));
+
+}
+
+ImageUtil.prototype.generateAndCopyImage = function(sourceImagePath, imageSetFolderPath) {
+
+    var filePath3X = this.generateAssetPath(sourceImagePath, imageSetFolderPath, "@3x");
+    var filePath2X = this.generateAssetPath(sourceImagePath, imageSetFolderPath, "@2x");
+    var filePath1X = this.generateAssetPath(sourceImagePath, imageSetFolderPath, "");
+
 	var images = [
 		{
 	      "idiom" : "universal",
@@ -332,8 +362,13 @@ ImageUtil.prototype.generateAndCopyImage = function(sourceImagePath, assetFolder
 	var width = imageSize.width;
 	var height = imageSize.height;
 
-	this.resizeAndSaveImage(sourceImagePath, width, height, filePath3X);		
-	this.resizeAndSaveImage(sourceImagePath, width / 3.0 * 2.0, height / 3.0 * 2.0, filePath2X);			
+	//@3x
+	this.resizeAndSaveImage(sourceImagePath, width, height, filePath3X);
+
+	//@2x
+	this.resizeAndSaveImage(sourceImagePath, width / 3.0 * 2.0, height / 3.0 * 2.0, filePath2X);
+
+	//@1x
 	this.resizeAndSaveImage(sourceImagePath, width / 3.0, height / 3.0, filePath1X);				
 
 	return this.generateContentJSON(assetFolder, images);	
@@ -367,16 +402,11 @@ ImageUtil.prototype.generate = function(configItem) {
 		
 	this.listfolder(sourcePath).then(function(files){
 
-		if(type === "assets") {
-
-
-		};
-
 		files.forEach(function(filePath) {
 
 			if(type === "assets") {
 				
-				self.generateStructure(filePath, destPath).then(function(assetFolder){
+				self.generateAssetStructure(filePath, destPath).then(function(assetFolder){
 
 					self.generateAndCopyImage(filePath, assetFolder);
 
