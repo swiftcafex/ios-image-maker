@@ -96,12 +96,44 @@ BaseGenerator.prototype.generateContentJSON = function(imageSetFolderPath, image
 };
 
 
-
+/**
+ * Resize image from imagePath and copy it to destPath
+ * @param imagePath source image path.
+ * @param destWidth image width to resize.
+ * @param destHeight image height to resize.
+ * @param destPath  path to save the resized image.
+ * @returns {Promise} A promise indicate the resize result.
+ */
 BaseGenerator.prototype.resizeAndCopyImage = function(imagePath, destWidth, destHeight, destPath) {
 
-    jimp.read(imagePath, function(err, image){
+    return new Promise(function(resolve, reject){
 
-        image.resize(destWidth, destHeight).write(destPath);
+        jimp.read(imagePath, function(err, image){
+
+            if(err) {
+
+                reject(err);
+
+            } else {
+
+                image.resize(destWidth, destHeight).write(destPath, function(err){
+
+                    if(err) {
+
+                        reject(err);
+
+                    } else {
+
+                        resolve();
+
+                    }
+
+                });
+
+
+            }
+
+        });
 
     });
 

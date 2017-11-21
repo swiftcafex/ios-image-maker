@@ -10,6 +10,7 @@ process.chdir(workingDIR);
 test('Generator.listFiles',async t => {
 
     var generator = new Generator();
+
     await generator.listFiles("./listFiles").then(function(files){
 
         t.is(files.length, 2);
@@ -17,7 +18,6 @@ test('Generator.listFiles',async t => {
         t.is(files[1], 'listFiles/disk.jpg');
 
     });
-
 
     await generator.listFiles("./nonexistPath").then(function(err){
 

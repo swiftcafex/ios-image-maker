@@ -2,35 +2,26 @@
 import test from 'ava';
 
 var AssetGenerator = require("../func/generator-asset");
+var supportCleaner = require("./_support/support-cleaner");
 var path = require("path");
 var fs = require("fs.extra");
 
 test.before(async t => {
 
-    var workingDirList = [
-        path.join(__dirname, "_support/test-generator-asset/generateImageSetFolder"),
-        path.join(__dirname, "_support/test-generator-asset/generateImageSetImages"),
-        path.join(__dirname, "_support/test-generator-asset/startGenerateImages")
-
-    ];
-
-    var promiseList = [];
-
-    workingDirList.forEach(function (item) {
-
-       var promise = new Promise(function(resolve, reject){
-
-           process.chdir(item);
-           fs.removeSync("./output/Assets.xcassets/");
-           resolve();
-
-       });
-
-       promiseList.push(promise);
-
-    });
-
-    await Promise.all(promiseList).then(function(){
+    await supportCleaner.cleanSupportDir([
+        {
+            "cwd" : path.join(__dirname, "_support/test-generator-asset/generateImageSetFolder"),
+            "dir" : "./output/Assets.xcassets/"
+        },
+        {
+            "cwd" : path.join(__dirname, "_support/test-generator-asset/generateImageSetImages"),
+            "dir" : "./output/Assets.xcassets/"
+        },
+        {
+            "cwd" : path.join(__dirname, "_support/test-generator-asset/startGenerateImages"),
+            "dir" : "./output/Assets.xcassets/"
+        }
+    ]).then(function(){
 
     });
 
