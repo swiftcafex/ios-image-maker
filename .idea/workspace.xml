@@ -2,13 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2fb50f5-fc25-4364-a322-4a4cd41972e4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/_support/test-generator-bundle/generateBundleImage/source/cloud.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/_support/test-generator-bundle/startGenerateBundle/source/cloud.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/_support/test-generator-bundle/startGenerateBundle/source/tree.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/_support/support-cleaner.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/test-generator-bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-76x76@3x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-76x76@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/_support/test-imageutil/generateConfigItem/sourceImages/bundle/test.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/generateImageSetFolder/output/Assets.xcassets/cloud.imageset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/generateImagesetImages/output/Assets.xcassets/cloud.imageset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/startGenerateImages/output/Assets.xcassets/cloud.imageset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/startGenerateImages/output/Assets.xcassets/cloud.imageset/cloud.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/startGenerateImages/output/Assets.xcassets/cloud.imageset/cloud@2x.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/startGenerateImages/output/Assets.xcassets/cloud.imageset/cloud@3x.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/startGenerateImages/output/Assets.xcassets/rss.imageset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/startGenerateImages/output/Assets.xcassets/rss.imageset/rss.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/startGenerateImages/output/Assets.xcassets/rss.imageset/rss@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-asset/startGenerateImages/output/Assets.xcassets/rss.imageset/rss@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/generateAppIconSetImage/output/Assets.xcassets/Icon.appiconset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/generateIconSetFolder/output/Assets.xcassets/Icon.appiconset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-20x20@1x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-20x20@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-20x20@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-29x29@1x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-29x29@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-29x29@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-40x40@1x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-40x40@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-40x40@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-57x57@1x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-57x57@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-60x60@1x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-60x60@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-60x60@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-76x76@1x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-76x76@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-76x76@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/Icon.appiconset/Icon-App-83.5x83.5@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-imageutil/output/Assets.xcassets/assets.imageset/Contents.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/_support/test-imageutil/output/Assets.xcassets/test.imageset/Contents.json" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/_support/support-cleaner.js" afterPath="$PROJECT_DIR$/test/_support/_support-cleaner.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/_support/test-imageutil/sourceImages/assets/test.png" afterPath="$PROJECT_DIR$/test/_support/test-imageutil/generateConfigItem/sourceImages/assets/test.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-20x20@1x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-20x20@1x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-20x20@2x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-20x20@2x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-20x20@3x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-20x20@3x.png" />
@@ -25,14 +55,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-60x60@3x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-60x60@3x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-76x76@1x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-76x76@1x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-76x76@2x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-76x76@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-76x76@3x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-76x76@3x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-83.5x83.5@2x.png" afterPath="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons/output/Assets.xcassets/cloud.appiconset/Icon-App-83.5x83.5@2x.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/func/generator-bundle.js" afterPath="$PROJECT_DIR$/func/generator-bundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/func/generator.js" afterPath="$PROJECT_DIR$/func/generator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/func/generator-asset.js" afterPath="$PROJECT_DIR$/func/generator-asset.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/func/generator-icon.js" afterPath="$PROJECT_DIR$/func/generator-icon.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imageutil.js" afterPath="$PROJECT_DIR$/imageutil.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test-generator-asset.js" afterPath="$PROJECT_DIR$/test/test-generator-asset.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test-generator.js" afterPath="$PROJECT_DIR$/test/test-generator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test-generator-bundle.js" afterPath="$PROJECT_DIR$/test/test-generator-bundle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test-generator-icon.js" afterPath="$PROJECT_DIR$/test/test-generator-icon.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test-image-util.js" afterPath="$PROJECT_DIR$/test/test-image-util.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,71 +78,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="generator-icon.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func/generator-icon.js">
+      <file leaf-file-name="test-image-util.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test-image-util.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="91" column="7" lean-forward="false" selection-start-line="59" selection-start-column="3" selection-end-line="91" selection-end-column="7" />
+            <state relative-caret-position="418">
+              <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test-generator.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test-generator.js">
+      <file leaf-file-name="_support-cleaner.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/_support/_support-cleaner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="generator-bundle.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func/generator-bundle.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="78" column="15" lean-forward="false" selection-start-line="78" selection-start-column="15" selection-end-line="78" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test-generator-bundle.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/test-generator-bundle.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="96" column="53" lean-forward="false" selection-start-line="96" selection-start-column="53" selection-end-line="96" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="support-cleaner.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/_support/support-cleaner.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test-config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test-config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test-generator-asset.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test-generator-asset.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="57" column="4" lean-forward="false" selection-start-line="57" selection-start-column="4" selection-end-line="60" selection-end-column="83" />
+            <state relative-caret-position="459">
+              <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -120,18 +101,40 @@
       <file leaf-file-name="test-generator-icon.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test-generator-icon.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="88" column="22" lean-forward="false" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+            <state relative-caret-position="450">
+              <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generator-asset.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/func/generator-asset.js">
+      <file leaf-file-name="test-generator-asset.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test-generator-asset.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="451">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generator.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/func/generator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="114" column="28" lean-forward="true" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#41#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test-generator-bundle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test-generator-bundle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -163,6 +166,7 @@
       <find>resizeAndSaveImage</find>
       <find>sizeOf</find>
       <find>queue</find>
+      <find>generate image</find>
       <find>self.generateIconSetFolder</find>
     </findStrings>
   </component>
@@ -189,20 +193,21 @@
         <option value="$PROJECT_DIR$/test/test-imageutil.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/test/_support/test-imageutil/image-config.json" />
-        <option value="$PROJECT_DIR$/test/test-image-util.js" />
-        <option value="$PROJECT_DIR$/func/generator-asset.js" />
         <option value="$PROJECT_DIR$/func/app-icon-template.json.js" />
         <option value="$PROJECT_DIR$/func/app-icon-template.json" />
         <option value="$PROJECT_DIR$/func/app-icon-template.js" />
-        <option value="$PROJECT_DIR$/test/test-generator-icon.js" />
-        <option value="$PROJECT_DIR$/func/generator-icon.js" />
-        <option value="$PROJECT_DIR$/imageutil.js" />
         <option value="$PROJECT_DIR$/test/test-generator.js" />
         <option value="$PROJECT_DIR$/func/generator.js" />
         <option value="$PROJECT_DIR$/test/_support/support-cleaner.js" />
-        <option value="$PROJECT_DIR$/test/test-generator-asset.js" />
         <option value="$PROJECT_DIR$/func/generator-bundle.js" />
         <option value="$PROJECT_DIR$/test/test-generator-bundle.js" />
+        <option value="$PROJECT_DIR$/test/test-generator-asset.js" />
+        <option value="$PROJECT_DIR$/func/generator-icon.js" />
+        <option value="$PROJECT_DIR$/test/test-generator-icon.js" />
+        <option value="$PROJECT_DIR$/func/generator-asset.js" />
+        <option value="$PROJECT_DIR$/imageutil.js" />
+        <option value="$PROJECT_DIR$/test/_support/_support-cleaner.js" />
+        <option value="$PROJECT_DIR$/test/test-image-util.js" />
       </list>
     </option>
   </component>
@@ -348,15 +353,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test-generator-bundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="startGenerateBundle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
+              <option name="myItemId" value="test-imageutil" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -378,11 +375,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test-generator-bundle" />
+              <option name="myItemId" value="test-imageutil" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="startGenerateBundle" />
+              <option name="myItemId" value="generateConfigItem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourceImages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icon" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -404,11 +409,83 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test-generator-bundle" />
+              <option name="myItemId" value="test-imageutil" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="generateBundleImage" />
+              <option name="myItemId" value="generateConfigItem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourceImages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ios-image-maker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ios-image-maker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_support" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test-imageutil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="generateConfigItem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sourceImages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ios-image-maker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ios-image-maker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_support" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test-imageutil" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="generateConfigItem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="output" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -442,15 +519,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/_support/test-imageutil/generateConfigItem" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/_support/test-imageutil/generateConfigItem/sourceImages/bundle" />
       <recent name="$PROJECT_DIR$/test/_support/test-generator-bundle/startGenerateBundle/source" />
       <recent name="$PROJECT_DIR$/test/_support/test-generator-bundle/startGenerateBundle" />
       <recent name="$PROJECT_DIR$/test/_support/test-generator-bundle/generateBundleImage" />
       <recent name="$PROJECT_DIR$/test" />
-      <recent name="$PROJECT_DIR$/test/_support/test-generator-icon/startGenerateIcons" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -560,12 +638,12 @@
       <workItem from="1510666364442" duration="10323000" />
       <workItem from="1510743235516" duration="24374000" />
       <workItem from="1510915160355" duration="40822000" />
-      <workItem from="1511239692469" duration="9323000" />
+      <workItem from="1511239692469" duration="21214000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84842000" />
+    <option name="totallyTimeSpent" value="96733000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -575,6 +653,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2544757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -586,7 +665,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2544757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -597,7 +675,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -643,13 +723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1139">
@@ -669,6 +742,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -677,6 +751,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -706,6 +781,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="335" column="32" lean-forward="false" selection-start-line="335" selection-start-column="32" selection-end-line="335" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -713,6 +789,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="38" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -721,17 +798,6 @@
         <state relative-caret-position="119">
           <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-          <folding>
-            <marker date="1511010166663" expanded="true" signature="0:673" ph="{&quot;name&quot;: &quot;ios-image-maker&quot;...}" />
-            <marker date="1511010166663" expanded="true" signature="376:671" ph="{&quot;ava&quot;: &quot;^0.23.0&quot;...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -746,13 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="3" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/_support/test-imageutil/image-config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -786,14 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test-image-util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/_support/test-generator-icon/generateIconSetFolder/output/Assets.xcassets/Icon.appiconset/Contents.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -818,62 +869,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imageutil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test-generator-icon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="88" column="22" lean-forward="false" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/func/generator-icon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="91" column="7" lean-forward="false" selection-start-line="59" selection-start-column="3" selection-end-line="91" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/fs.extra/fs.extra.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="22" column="2" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/jimp/jimp.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/func/generator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="105" column="3" lean-forward="true" selection-start-line="105" selection-start-column="3" selection-end-line="105" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/func/generator-asset.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -894,35 +893,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/_support/support-cleaner.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/func/generator-bundle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="15" lean-forward="false" selection-start-line="78" selection-start-column="15" selection-end-line="78" selection-end-column="15" />
+        <state relative-caret-position="543">
+          <caret line="86" column="15" lean-forward="true" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test-generator-asset.js">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="57" column="4" lean-forward="false" selection-start-line="57" selection-start-column="4" selection-end-line="60" selection-end-column="83" />
+        <state relative-caret-position="220">
+          <caret line="19" column="84" lean-forward="false" selection-start-line="19" selection-start-column="84" selection-end-line="19" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func/generator-asset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-686">
+          <caret line="65" column="34" lean-forward="true" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func/generator-icon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/_support/test-imageutil/image-config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/fs.extra/fs.extra.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="28" column="2" lean-forward="false" selection-start-line="28" selection-start-column="2" selection-end-line="28" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="12" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test-generator-bundle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="96" column="53" lean-forward="false" selection-start-line="96" selection-start-column="53" selection-end-line="96" selection-end-column="53" />
+        <state relative-caret-position="17">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imageutil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/_support/_support-cleaner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="18" lean-forward="false" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test-generator-asset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test-generator-icon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test-image-util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func/generator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="114" column="28" lean-forward="true" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

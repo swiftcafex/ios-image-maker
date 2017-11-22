@@ -4,7 +4,7 @@ import test from 'ava';
 var BundleGenerator = require("../func/generator-bundle");
 var path = require("path");
 var fs = require("fs");
-var supportCleaner = require("./_support/support-cleaner");
+var supportCleaner = require("./_support/_support-cleaner");
 
 function clean() {
 

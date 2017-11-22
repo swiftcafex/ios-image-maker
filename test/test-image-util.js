@@ -2,81 +2,118 @@
 
 import test from 'ava';
 
-var imageutil = require("../imageutil");
+var ImageUtil = require("../imageutil");
 var config = require("../config");
+var supportCleaner = require("./_support/_support-cleaner");
 var path = require("path");
 var fs = require('fs');
 
-var workingDIR = path.join(__dirname, "_support/test-imageutil");
-process.chdir(workingDIR);
 
-test('ImageUtil.listFolder',async t => {
+function clean() {
 
-    await config.init().then(async function(items){
+    return supportCleaner.cleanSupportDir([
 
-        t.is(items[0]['type'], 'assets');
-        t.is(items[0]['sourcePath'], './sourceImages/assets');
-        t.is(items[0]['destPath'], './output/Assets.xcassets');
+        {
+            "cwd" : path.join(__dirname, "_support/test-imageutil/generateConfigItem"),
+            "dir" : "./output/asset/Assets.xcassets/"
+        },
+        {
+            "cwd" : path.join(__dirname, "_support/test-imageutil/generateConfigItem"),
+            "dir" : "./output/bundle/test.bundle"
+        },
+        {
+            "cwd" : path.join(__dirname, "_support/test-imageutil/generateConfigItem"),
+            "dir" : "./output/icon/Assets.xcassets/"
+        }
 
-        t.is(items[1]['type'], 'icon');
-        t.is(items[1]['sourcePath'], "./sourceImages/icon");
-        t.is(items[1]['destPath'], "./output/Assets.xcassets");
+    ]);
+}
 
+test.before(async t => {
 
-        await imageutil.listfolder(items[0]['sourcePath']).then(function(files){
-
-            t.is(files.length, 1);
-            t.is(files[0], 'sourceImages/assets/test.png');
-
-        });
-
-        await imageutil.listfolder(items[1]['sourcePath']).then(function(files){
-
-            t.is(files.length, 1);
-            t.is(files[0], 'sourceImages/icon/icon.png');
-
-        });
-
-    });
-
-    t.pass();
+    await clean().then(function(){ });
 
 });
 
-test('ImageUtil.generateContentJSON', async t => {
+test.after(async t => {
 
-    await config.init().then(async function(items) {
+    await clean().then(function(){ });
 
-        t.is(items[0]['type'], 'assets');
-        t.is(items[0]['sourcePath'], './sourceImages/assets');
-        t.is(items[0]['destPath'], './output/Assets.xcassets');
+});
 
-        t.is(items[1]['type'], 'icon');
-        t.is(items[1]['sourcePath'], "./sourceImages/icon");
-        t.is(items[1]['destPath'], "./output/Assets.xcassets");
+test('ImageUtil.generateConfigItem', async t => {
 
-        var sourceFolder = items[0]['sourcePath'];
-        var assetPath = items[0]['destPath'];
+    var workingDIR = path.join(__dirname, "_support/test-imageutil/generateConfigItem");
+    process.chdir(workingDIR);
 
+    var assetConfig = {
 
-        await imageutil.listfolder(sourceFolder).then(function(files){
+        "type": "assets",
+        "sourcePath": "./sourceImages/assets",
+        "destPath": "./output/asset/Assets.xcassets"
 
-            t.is(files.length, 1);
-            var sourcePath = files[0];
-            var assetFolder = path.join(assetPath, path.basename(sourcePath, path.extname(sourcePath))) + ".imageset";
+    };
 
+    t.false(fs.existsSync("./output/asset/Assets.xcassets"));
+    t.false(fs.existsSync("./output/asset/Assets.xcassets/test.imageset/Contents.json"));
+    t.false(fs.existsSync("./output/asset/Assets.xcassets/test.imageset/test.png"));
+    t.false(fs.existsSync("./output/asset/Assets.xcassets/test.imageset/test@2x.png"));
+    t.false(fs.existsSync("./output/asset/Assets.xcassets/test.imageset/test@3x.png"));
 
-            imageutil.generateAssetStructure(sourcePath, assetPath).then(function() {
+    await ImageUtil.generateConfigItem(assetConfig).then(function(){
 
-                // Contents.json file should be created, after call this method.
-                var contentPath = path.join(assetFolder, 'Contents.json');
-                t.true(fs.existsSync(contentPath));
-
-            })
-
-        });
+        t.true(fs.existsSync("./output/asset/Assets.xcassets"));
+        t.true(fs.existsSync("./output/asset/Assets.xcassets/test.imageset/Contents.json"));
+        t.true(fs.existsSync("./output/asset/Assets.xcassets/test.imageset/test.png"));
+        t.true(fs.existsSync("./output/asset/Assets.xcassets/test.imageset/test@2x.png"));
+        t.true(fs.existsSync("./output/asset/Assets.xcassets/test.imageset/test@3x.png"));
 
     });
+
+
+    var bundleConfig = {
+
+        "type": "bundle",
+        "sourcePath": "./sourceImages/bundle",
+        "destPath": "./output/bundle/test.bundle"
+
+    };
+
+    t.false(fs.existsSync("./output/bundle/test.bundle"));
+    t.false(fs.existsSync("./output/bundle/test.bundle/test.png"));
+    t.false(fs.existsSync("./output/bundle/test.bundle/test@2x.png"));
+    t.false(fs.existsSync("./output/bundle/test.bundle/test@3x.png"));
+
+
+    await ImageUtil.generateConfigItem(bundleConfig).then(function(){
+
+        t.true(fs.existsSync("./output/bundle/test.bundle"));
+        t.true(fs.existsSync("./output/bundle/test.bundle/test.png"));
+        t.true(fs.existsSync("./output/bundle/test.bundle/test@2x.png"));
+        t.true(fs.existsSync("./output/bundle/test.bundle/test@3x.png"));
+
+    });
+
+
+    var iconConfig = {
+
+        "type": "icon",
+        "sourcePath": "./sourceImages/icon",
+        "destPath": "./output/icon/Assets.xcassets"
+
+    };
+
+    t.false(fs.existsSync("./output/icon/Assets.xcassets"));
+    t.false(fs.existsSync("./output/icon/Assets.xcassets/icon.appiconset"));
+
+
+    await ImageUtil.generateConfigItem(iconConfig).then(function(){
+
+        t.true(fs.existsSync("./output/icon/Assets.xcassets"));
+        t.true(fs.existsSync("./output/icon/Assets.xcassets/icon.appiconset"));
+
+    });
+
 
     t.pass();
 

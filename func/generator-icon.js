@@ -38,6 +38,9 @@ IconGenerator.prototype.generateAppIconSetImage = function(sourceImagePath, asse
     var images = iconTemplate;
 
     var self = this;
+
+    var promiseList = [];
+
     // resizeAndSaveImage
     images.forEach(function(item){
 
@@ -47,11 +50,13 @@ IconGenerator.prototype.generateAppIconSetImage = function(sourceImagePath, asse
         var fileName = item.filename;
         var destPath = path.join(assetFolder, fileName);
 
-        self.resizeAndCopyImage(sourceImagePath, destWidth, destWidth, destPath);
+        promiseList.push(self.resizeAndCopyImage(sourceImagePath, destWidth, destWidth, destPath));
 
     });
 
-    return this.generateContentJSON(assetFolder, images);
+    promiseList.push(this.generateContentJSON(assetFolder, images));
+
+    return Promise.all(promiseList);
 
 };
 

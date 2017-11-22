@@ -16,7 +16,7 @@ SupportCleaner.prototype.cleanSupportDir = function(dirList) {
         var promise = new Promise(function(resolve){
 
             process.chdir(item["cwd"]);
-            fs.removeSync(item["dir"]);
+            var result = fs.removeSync(item["dir"]);
             resolve();
 
         });

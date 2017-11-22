@@ -57,8 +57,6 @@ AssetGenerator.prototype.generateAssetPath = function(sourceImagePath, imageSetF
 
 AssetGenerator.prototype.generateImagesetImages = function(sourceImagePath, imageSetFolderPath) {
 
-    console.log("generate image " + sourceImagePath);
-
     var filePath3X = this.generateAssetPath(sourceImagePath, imageSetFolderPath, "@3x");
     var filePath2X = this.generateAssetPath(sourceImagePath, imageSetFolderPath, "@2x");
     var filePath1X = this.generateAssetPath(sourceImagePath, imageSetFolderPath, "");
@@ -86,16 +84,20 @@ AssetGenerator.prototype.generateImagesetImages = function(sourceImagePath, imag
     var width = imageSize.width;
     var height = imageSize.height;
 
+    var promiseList = [];
+
     //@3x
-    this.resizeAndCopyImage(sourceImagePath, width, height, filePath3X);
+    promiseList.push(this.resizeAndCopyImage(sourceImagePath, width, height, filePath3X));
 
     //@2x
-    this.resizeAndCopyImage(sourceImagePath, width / 3.0 * 2.0, height / 3.0 * 2.0, filePath2X);
+    promiseList.push(this.resizeAndCopyImage(sourceImagePath, width / 3.0 * 2.0, height / 3.0 * 2.0, filePath2X));
 
     //@1x
-    this.resizeAndCopyImage(sourceImagePath, width / 3.0, height / 3.0, filePath1X);
+    promiseList.push(this.resizeAndCopyImage(sourceImagePath, width / 3.0, height / 3.0, filePath1X));
 
-    return this.generateContentJSON(imageSetFolderPath, images);
+    promiseList.push(this.generateContentJSON(imageSetFolderPath, images));
+
+    return Promise.all(promiseList);
 
 };
 
@@ -104,9 +106,6 @@ AssetGenerator.prototype.startGenerateImages = function(sourcePath, destPath) {
 
     var self = this;
 
-
-
-    console.log("start generate image");
     return new Promise(function(resolve){
 
         self.listFiles(sourcePath).then(function(files){
@@ -115,7 +114,6 @@ AssetGenerator.prototype.startGenerateImages = function(sourcePath, destPath) {
 
             files.forEach(function(filePath){
 
-                console.log("generate file " + filePath);
                 var task = self.generateImageSetFolder(filePath, destPath).then(function(imageSetPath) {
 
                     return self.generateImagesetImages(filePath, imageSetPath);

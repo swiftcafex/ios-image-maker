@@ -2,13 +2,13 @@
 import test from 'ava';
 
 var AssetGenerator = require("../func/generator-asset");
-var supportCleaner = require("./_support/support-cleaner");
+var supportCleaner = require("./_support/_support-cleaner");
 var path = require("path");
 var fs = require("fs.extra");
 
-test.before(async t => {
+function clean() {
 
-    await supportCleaner.cleanSupportDir([
+    return supportCleaner.cleanSupportDir([
         {
             "cwd" : path.join(__dirname, "_support/test-generator-asset/generateImageSetFolder"),
             "dir" : "./output/Assets.xcassets/"
@@ -21,9 +21,18 @@ test.before(async t => {
             "cwd" : path.join(__dirname, "_support/test-generator-asset/startGenerateImages"),
             "dir" : "./output/Assets.xcassets/"
         }
-    ]).then(function(){
+    ]);
+}
 
-    });
+test.before(async t => {
+
+    await clean().then(function(){ });
+
+});
+
+test.after(async t => {
+
+    await clean().then(function(){ });
 
 });
 
@@ -95,8 +104,6 @@ test('AssetGenerator.startGenerateImages',async t => {
     var assetPath = "./output/Assets.xcassets";
 
     await generator.startGenerateImages(sourcePath, assetPath).then(function() {
-
-        console.log("generate finished");
 
     });
 
