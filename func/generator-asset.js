@@ -38,9 +38,12 @@ AssetGenerator.prototype.generateImageSetFolder = function(sourceFilePath, asset
     if(!fs.existsSync(imagesetFolder)) {
 
         // create .imageset folder, if not exist.
-        fs.mkdirpSync(imagesetFolder);
+        var result = fs.mkdirpSync(imagesetFolder);
+        console.log("create image folder: " + imagesetFolder );
 
     }
+
+
 
     return this.generateContentJSON(imagesetFolder);
 
