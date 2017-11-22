@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2fb50f5-fc25-4364-a322-4a4cd41972e4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/func/generator.js" afterPath="$PROJECT_DIR$/func/generator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/func/generator-asset.js" afterPath="$PROJECT_DIR$/func/generator-asset.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,18 +50,18 @@
       <file leaf-file-name="test-generator-asset.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test-generator-asset.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+            <state relative-caret-position="558">
+              <caret line="73" column="38" lean-forward="true" selection-start-line="73" selection-start-column="38" selection-end-line="73" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generator.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="generator.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/func/generator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="81" column="50" lean-forward="false" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
+            <state relative-caret-position="602">
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
               </folding>
@@ -89,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generator-asset.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="generator-asset.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/func/generator-asset.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="44" column="28" lean-forward="false" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+            <state relative-caret-position="400">
+              <caret line="41" column="73" lean-forward="false" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -163,11 +163,11 @@
         <option value="$PROJECT_DIR$/test/test-generator-asset.js" />
         <option value="$PROJECT_DIR$/func/generator-icon.js" />
         <option value="$PROJECT_DIR$/test/test-generator-icon.js" />
-        <option value="$PROJECT_DIR$/func/generator-asset.js" />
         <option value="$PROJECT_DIR$/imageutil.js" />
         <option value="$PROJECT_DIR$/test/_support/_support-cleaner.js" />
         <option value="$PROJECT_DIR$/test/test-image-util.js" />
         <option value="$PROJECT_DIR$/func/generator.js" />
+        <option value="$PROJECT_DIR$/func/generator-asset.js" />
       </list>
     </option>
   </component>
@@ -598,12 +598,12 @@
       <workItem from="1510666364442" duration="10323000" />
       <workItem from="1510743235516" duration="24374000" />
       <workItem from="1510915160355" duration="40822000" />
-      <workItem from="1511239692469" duration="21897000" />
+      <workItem from="1511239692469" duration="22579000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97416000" />
+    <option name="totallyTimeSpent" value="98098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -943,29 +943,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/func/generator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="602">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/test-generator-asset.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+        <state relative-caret-position="558">
+          <caret line="73" column="38" lean-forward="true" selection-start-line="73" selection-start-column="38" selection-end-line="73" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/func/generator-asset.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="44" column="28" lean-forward="false" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+        <state relative-caret-position="400">
+          <caret line="41" column="73" lean-forward="false" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/func/generator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="81" column="50" lean-forward="false" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
