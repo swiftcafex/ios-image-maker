@@ -39,11 +39,8 @@ AssetGenerator.prototype.generateImageSetFolder = function(sourceFilePath, asset
 
         // create .imageset folder, if not exist.
         var result = fs.mkdirpSync(imagesetFolder);
-<<<<<<< HEAD
         console.log("create image folder: " + imagesetFolder + " result: " + result);
-=======
-        console.log("create image folder: " + imagesetFolder );
->>>>>>> 01390aba163e10ee0b125b89a0b14dd19cd1349f
+
 
     }
 
