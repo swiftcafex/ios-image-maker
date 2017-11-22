@@ -79,7 +79,7 @@ BaseGenerator.prototype.generateContentJSON = function(imageSetFolderPath, image
         fs.writeFile(contentJSONPath, jsonString, function(err){
 
             if(err) {
-
+                console.log("write failed, " + err);
                 reject(err);
 
             } else {
