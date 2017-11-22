@@ -93,7 +93,11 @@
         <entry file="file://$PROJECT_DIR$/func/generator-asset.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
+<<<<<<< HEAD
               <caret line="41" column="73" lean-forward="false" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
+=======
+              <caret line="41" column="63" lean-forward="false" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+>>>>>>> 01390aba163e10ee0b125b89a0b14dd19cd1349f
               <folding />
             </state>
           </provider>
@@ -598,12 +602,20 @@
       <workItem from="1510666364442" duration="10323000" />
       <workItem from="1510743235516" duration="24374000" />
       <workItem from="1510915160355" duration="40822000" />
+<<<<<<< HEAD
       <workItem from="1511239692469" duration="22579000" />
+=======
+      <workItem from="1511239692469" duration="22490000" />
+>>>>>>> 01390aba163e10ee0b125b89a0b14dd19cd1349f
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="98098000" />
+=======
+    <option name="totallyTimeSpent" value="98009000" />
+>>>>>>> 01390aba163e10ee0b125b89a0b14dd19cd1349f
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -964,7 +976,11 @@
     <entry file="file://$PROJECT_DIR$/func/generator-asset.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
+<<<<<<< HEAD
           <caret line="41" column="73" lean-forward="false" selection-start-line="41" selection-start-column="73" selection-end-line="41" selection-end-column="73" />
+=======
+          <caret line="41" column="63" lean-forward="false" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+>>>>>>> 01390aba163e10ee0b125b89a0b14dd19cd1349f
           <folding />
         </state>
       </provider>
