@@ -4,7 +4,7 @@
   "description": "automatic generate all 1x, 2x and 3x images from one source image.",
   "main": "index.js",
   "scripts": {
-    "test": "nyc ava",
+    "test": "nyc ava -s",
     "coveralls": "nyc report --reporter=text-lcov | converalls"
   },
   "bin": {
