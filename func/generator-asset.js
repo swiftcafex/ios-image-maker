@@ -2,7 +2,7 @@ var Generator = require('./generator');
 var fs = require('fs.extra');
 var path = require('path');
 var sizeOf = require('image-size');
-
+var mkdirp = require('mkdirp');
 
 function AssetGenerator() {
 
@@ -12,9 +12,6 @@ function AssetGenerator() {
 
 AssetGenerator.prototype = Object.create(Generator.prototype);
 
-AssetGenerator.prototype.generateFile = function() {
-
-}
 
 /**
  *
@@ -32,21 +29,56 @@ AssetGenerator.prototype.generateFile = function() {
  */
 AssetGenerator.prototype.generateImageSetFolder = function(sourceFilePath, assetPath) {
 
-    // ./sourceImages/assets/[cloud].jpg && [./image-example/Assets.xcassets] => ./image-example/Assets.xcassets/cloud.imageset
-    var imagesetFolder = path.join(assetPath, path.basename(sourceFilePath, path.extname(sourceFilePath))) + ".imageset";
+    var self = this;
 
+    var imagesetFolder = path.join(assetPath, path.basename(sourceFilePath, path.extname(sourceFilePath))) + ".imageset";
     if(!fs.existsSync(imagesetFolder)) {
 
-        // create .imageset folder, if not exist.
-        var result = fs.mkdirpSync(imagesetFolder);
-        console.log("create image folder: " + imagesetFolder + " result: " + result);
-
+        mkdirp.sync(imagesetFolder);
 
     }
 
-
-
-    return this.generateContentJSON(imagesetFolder);
+    return self.generateContentJSON(imagesetFolder);
+    // return new Promise(function(resolve, reject){
+    //
+    //     // ./sourceImages/assets/[cloud].jpg && [./image-example/Assets.xcassets] => ./image-example/Assets.xcassets/cloud.imageset
+    //     var imagesetFolder = path.join(assetPath, path.basename(sourceFilePath, path.extname(sourceFilePath))) + ".imageset";
+    //
+    //     if(!fs.existsSync(imagesetFolder)) {
+    //
+    //         console.log("create folder: " + imagesetFolder);
+    //         console.log("cwd: " + process.cwd());
+    //
+    //         mkdirp(imagesetFolder, function(err) {
+    //
+    //             if(err) {
+    //
+    //                 console.log("create folder failed " + err);
+    //                 reject(err);
+    //
+    //             } else {
+    //
+    //                 console.log("create folder success cwd" + process.cwd());
+    //                 console.log("create folder success" + imagesetFolder);
+    //                 resolve(imagesetFolder);
+    //
+    //             }
+    //
+    //         });
+    //
+    //     } else {
+    //
+    //         resolve(imagesetFolder);
+    //
+    //     }
+    //
+    // }).then(function (imagesetFolder) {
+    //
+    //     var exist = fs.existsSync(imagesetFolder);
+    //     console.log("then path exist " + exist);
+    //     return self.generateContentJSON(imagesetFolder);
+    //
+    // });
 
 };
 

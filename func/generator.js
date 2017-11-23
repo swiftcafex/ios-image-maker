@@ -74,12 +74,19 @@ BaseGenerator.prototype.generateContentJSON = function(imageSetFolderPath, image
         };
 
         var jsonString = JSON.stringify(initialContent, null, 2);
-        var contentJSONPath = path.join(imageSetFolderPath, "Contents.json");
 
-        fs.writeFile(contentJSONPath, jsonString, function(err){
+        var contentJSONPath = path.join(process.cwd(), imageSetFolderPath, "Contents.json");
+
+        fs.writeFile(contentJSONPath, jsonString, 'utf-8',function(err) {
 
             if(err) {
+
+                var exist = fs.existsSync(imageSetFolderPath);
+
                 console.log("write failed, " + err);
+                console.log("write failed cwd" + process.cwd());
+                console.log("write failed path exist:" + exist + "  :path:" + imageSetFolderPath );
+
                 reject(err);
 
             } else {
