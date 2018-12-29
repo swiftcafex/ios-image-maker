@@ -1,4 +1,4 @@
-var doInit = require("./func/init.func");
+var doInit = require("./func/command.init.func");
 const chalk = require('chalk');
 
 doInit(function(){

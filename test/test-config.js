@@ -9,7 +9,7 @@ var fs = require("fs");
 var workingDIR = path.join(__dirname, "_support/test-config");
 process.chdir(workingDIR);
 
-test('Config.readFile', async t => {
+test('read config from file', async t => {
 
     var configPath = "./image-config.json";
 
