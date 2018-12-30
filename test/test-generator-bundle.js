@@ -33,47 +33,47 @@ test.after(async t => {
 
 });
 
-test('BundleGenerator.generateBundleImage',async t => {
-
-    var workingDIR = path.join(__dirname, "_support/test-generator-bundle/generateBundleImage");
-    process.chdir(workingDIR);
-
-    var generator = new BundleGenerator();
-
-    t.false(fs.existsSync("./output/result.bundle"));
-    t.false(fs.existsSync("./output/result.bundle/cloud.jpg"));
-    t.false(fs.existsSync("./output/result.bundle/cloud@2x.jpg"));
-    t.false(fs.existsSync("./output/result.bundle/cloud@3x.jpg"));
-
-    // non-exist source should fail.
-    await generator.generateBundleImage("./source/cloud-nonexists.jpg", "./output/result.bundle").then(function(){
-
-        t.fail();
-
-    }).catch(function(err){
-
-        t.false(fs.existsSync("./output/result.bundle"));
-        t.false(fs.existsSync("./output/result.bundle/cloud.jpg"));
-        t.false(fs.existsSync("./output/result.bundle/cloud@2x.jpg"));
-        t.false(fs.existsSync("./output/result.bundle/cloud@3x.jpg"));
-
-    });
-
-    // success generate
-    await generator.generateBundleImage("./source/cloud.jpg", "./output/result.bundle").then(function(){
-
-        t.true(fs.existsSync("./output/result.bundle"));
-        t.true(fs.existsSync("./output/result.bundle/cloud.jpg"));
-        t.true(fs.existsSync("./output/result.bundle/cloud@2x.jpg"));
-        t.true(fs.existsSync("./output/result.bundle/cloud@3x.jpg"));
-
-    });
-
-
-
-    t.pass();
-
-});
+// test('BundleGenerator.generateBundleImage',async t => {
+//
+//     var workingDIR = path.join(__dirname, "_support/test-generator-bundle/generateBundleImage");
+//     process.chdir(workingDIR);
+//
+//     var generator = new BundleGenerator();
+//
+//     t.false(fs.existsSync("./output/result.bundle"));
+//     t.false(fs.existsSync("./output/result.bundle/cloud.jpg"));
+//     t.false(fs.existsSync("./output/result.bundle/cloud@2x.jpg"));
+//     t.false(fs.existsSync("./output/result.bundle/cloud@3x.jpg"));
+//
+//     // non-exist source should fail.
+//     await generator.generateBundleImage("./source/cloud-nonexists.jpg", "./output/result.bundle").then(function(){
+//
+//         t.fail();
+//
+//     }).catch(function(err){
+//
+//         t.false(fs.existsSync("./output/result.bundle"));
+//         t.false(fs.existsSync("./output/result.bundle/cloud.jpg"));
+//         t.false(fs.existsSync("./output/result.bundle/cloud@2x.jpg"));
+//         t.false(fs.existsSync("./output/result.bundle/cloud@3x.jpg"));
+//
+//     });
+//
+//     // success generate
+//     await generator.generateBundleImage("./source/cloud.jpg", "./output/result.bundle").then(function(){
+//
+//         t.true(fs.existsSync("./output/result.bundle"));
+//         t.true(fs.existsSync("./output/result.bundle/cloud.jpg"));
+//         t.true(fs.existsSync("./output/result.bundle/cloud@2x.jpg"));
+//         t.true(fs.existsSync("./output/result.bundle/cloud@3x.jpg"));
+//
+//     });
+//
+//
+//
+//     t.pass();
+//
+// });
 
 test('BundleGenerator.startGenerateBundle', async t => {
 

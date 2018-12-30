@@ -2,16 +2,32 @@
 
 import test from 'ava';
 
-var config = require("../config");
+var Config = require("../config");
 var path = require("path");
 var fs = require("fs");
 
 var workingDIR = path.join(__dirname, "_support/test-config");
 process.chdir(workingDIR);
 
+
+
+
+test("init config file", async t => {
+
+    var dir = "./init-config";
+
+    var config = new Config();
+
+    config.configPath = path.join(workingDIR, dir, "config.json");
+    config.addAssetItem("input", "output");
+    config.writeFile();
+
+});
+
 test('read config from file', async t => {
 
     var configPath = "./image-config.json";
+    var config = new Config();
 
     t.true(fs.existsSync(configPath));
 
@@ -28,9 +44,10 @@ test('read config from file', async t => {
 
 });
 
-test('Config.parseFile', async t => {
+test('parse config file items', async t => {
 
     var configPath = "./image-config.json";
+    var config = new Config();
 
     t.true(fs.existsSync(configPath));
 
@@ -54,6 +71,8 @@ test('Config.parseFile', async t => {
 });
 
 test('Config.init', async t => {
+
+    var config = new Config();
 
     var workingDIR = path.join(__dirname, "_support/test-config");
     process.chdir(workingDIR);

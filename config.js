@@ -3,9 +3,54 @@
 
 var fs = require("fs");
 
+function ConfigItemAsset() {
+
+	this.type = "assets";
+	this.sourcePath = "";
+	this.destPath = "";
+
+}
+
+function ConfigItemIcon() {
+
+    this.type = "icon";
+    this.sourcePath = "";
+    this.destPath = "";
+
+}
+
 function Config() {
 
 	this.configPath = "./image-config.json";
+	this.items = [];
+
+}
+
+
+Config.prototype.addAssetItem = function(sourcePath, destPath) {
+
+	var item = ConfigItemAsset();
+	item.sourcePath = sourcePath;
+	item.destPath = destPath;
+
+	this.items.push(item);
+
+};
+
+Config.prototype.addIconItem = function (sourcePath, destPath) {
+
+	var item = ConfigItemIcon();
+	item.sourcePath = sourcePath;
+	item.destPath = destPath;
+
+	this.items.push(item);
+
+}
+
+Config.prototype.writeFile = function() {
+
+    var jsonString = JSON.stringify(this.items, null, "\t");
+	fs.writeFileSync(this.configPath, jsonString);
 
 }
 
@@ -59,7 +104,6 @@ Config.prototype.parseFile = function(data) {
 			reject(ex);
 
 		}
-		
 
 	});	
 
@@ -80,4 +124,4 @@ Config.prototype.init = function() {
 
 };
 
-module.exports = new Config();
+module.exports = Config;
