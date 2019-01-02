@@ -4,17 +4,17 @@ import test from 'ava';
 var BundleGenerator = require("../func/generator-bundle");
 var path = require("path");
 var fs = require("fs");
-var supportCleaner = require("./_support/_support-cleaner");
+var supportCleaner = require("./test-support/_support-cleaner");
 
 function clean() {
 
     return supportCleaner.cleanSupportDir([
         {
-            "cwd" : path.join(__dirname, "_support/test-generator-bundle/generateBundleImage"),
+            "cwd" : path.join(__dirname, "test-support/test-generator-bundle/generateBundleImage"),
             "dir" : "./output/result.bundle/"
         },
         {
-            "cwd" : path.join(__dirname, "_support/test-generator-bundle/startGenerateBundle"),
+            "cwd" : path.join(__dirname, "test-support/test-generator-bundle/startGenerateBundle"),
             "dir" : "./output/result.bundle/"
         }
     ]);
@@ -35,8 +35,8 @@ test.after(async t => {
 
 // test('BundleGenerator.generateBundleImage',async t => {
 //
-//     var workingDIR = path.join(__dirname, "_support/test-generator-bundle/generateBundleImage");
-//     process.chdir(workingDIR);
+//     var workingDirectoryPath = path.join(__dirname, "test-support/test-generator-bundle/generateBundleImage");
+//     process.chdir(workingDirectoryPath);
 //
 //     var generator = new BundleGenerator();
 //
@@ -77,7 +77,7 @@ test.after(async t => {
 
 test('BundleGenerator.startGenerateBundle', async t => {
 
-    var workingDIR = path.join(__dirname, "_support/test-generator-bundle/startGenerateBundle");
+    var workingDIR = path.join(__dirname, "test-support/test-generator-bundle/startGenerateBundle");
     process.chdir(workingDIR);
 
     var generator = new BundleGenerator();

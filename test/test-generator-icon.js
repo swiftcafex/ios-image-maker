@@ -4,21 +4,21 @@ import test from 'ava';
 var IconGenerator = require("../func/generator-icon");
 var path = require("path");
 var fs = require("fs.extra");
-var supportCleaner = require("./_support/_support-cleaner");
+var supportCleaner = require("./test-support/_support-cleaner");
 
 function clean() {
 
     return supportCleaner.cleanSupportDir([
         {
-            "cwd" : path.join(__dirname, "_support/test-generator-icon/generateIconSetFolder"),
+            "cwd" : path.join(__dirname, "test-support/test-generator-icon/generateIconSetFolder"),
             "dir" : "./output/Assets.xcassets/"
         },
         {
-            "cwd" : path.join(__dirname, "_support/test-generator-icon/generateAppIconSetImage"),
+            "cwd" : path.join(__dirname, "test-support/test-generator-icon/generateAppIconSetImage"),
             "dir" : "./output/Assets.xcassets/"
         },
         {
-            "cwd" : path.join(__dirname, "_support/test-generator-icon/startGenerateIcons"),
+            "cwd" : path.join(__dirname, "test-support/test-generator-icon/startGenerateIcons"),
             "dir" : "./output/Assets.xcassets/"
         }
     ]);
@@ -39,7 +39,7 @@ test.after(async t => {
 
 test('AssetGenerator.generateIconSetFolder',async t => {
 
-    var workingDIR = path.join(__dirname, "_support/test-generator-icon/generateIconSetFolder");
+    var workingDIR = path.join(__dirname, "test-support/test-generator-icon/generateIconSetFolder");
     process.chdir(workingDIR);
 
     var generator = new IconGenerator();
@@ -60,7 +60,7 @@ test('AssetGenerator.generateIconSetFolder',async t => {
 
 test('AssetGenerator.generateAppIconSetImage',async t => {
 
-    var workingDIR = path.join(__dirname, "_support/test-generator-icon/generateAppIconSetImage");
+    var workingDIR = path.join(__dirname, "test-support/test-generator-icon/generateAppIconSetImage");
     process.chdir(workingDIR);
 
     var generator = new IconGenerator();
@@ -89,7 +89,7 @@ test('AssetGenerator.generateAppIconSetImage',async t => {
 
 test('AssetGenerator.startGenerateIcons',async t => {
 
-    var workingDIR = path.join(__dirname, "_support/test-generator-icon/startGenerateIcons");
+    var workingDIR = path.join(__dirname, "test-support/test-generator-icon/startGenerateIcons");
     process.chdir(workingDIR);
 
     var generator = new IconGenerator();

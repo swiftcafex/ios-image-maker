@@ -1,15 +1,13 @@
-var fs = require('fs');
+let fs = require('fs');
+let Config = require("../config");
+
 // Initialize
 
 function CommandInit() {
 
-
-
 }
 
 CommandInit.prototype.doInit = function() {
-
-    
 
 };
 
@@ -18,6 +16,8 @@ CommandInit.prototype.doInit = function() {
  * @returns {boolean}
  */
 CommandInit.prototype.createConfigFileSync = function () {
+
+    var conf = new Config();
 
     var configPath = "./image-config.json";
 
@@ -145,4 +145,4 @@ function createConfigFile() {
 
 }
 
-module.exports = CommandInit;
+module.exports = new CommandInit();

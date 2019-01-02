@@ -4,7 +4,7 @@ import test from 'ava';
 
 var ImageUtil = require("../imageutil");
 var config = require("../config");
-var supportCleaner = require("./_support/_support-cleaner");
+var supportCleaner = require("./test-support/_support-cleaner");
 var path = require("path");
 var fs = require('fs');
 
@@ -14,15 +14,15 @@ function clean() {
     return supportCleaner.cleanSupportDir([
 
         {
-            "cwd" : path.join(__dirname, "_support/test-imageutil/generateConfigItem"),
+            "cwd" : path.join(__dirname, "test-support/test-imageutil/generateConfigItem"),
             "dir" : "./output/asset/Assets.xcassets/"
         },
         {
-            "cwd" : path.join(__dirname, "_support/test-imageutil/generateConfigItem"),
+            "cwd" : path.join(__dirname, "test-support/test-imageutil/generateConfigItem"),
             "dir" : "./output/bundle/test.bundle"
         },
         {
-            "cwd" : path.join(__dirname, "_support/test-imageutil/generateConfigItem"),
+            "cwd" : path.join(__dirname, "test-support/test-imageutil/generateConfigItem"),
             "dir" : "./output/icon/Assets.xcassets/"
         }
 
@@ -48,8 +48,8 @@ test("place holder", t => {
 
 // test('ImageUtil.generateConfigItem', async t => {
 //
-//     var workingDIR = path.join(__dirname, "_support/test-imageutil/generateConfigItem");
-//     process.chdir(workingDIR);
+//     var workingDirectoryPath = path.join(__dirname, "test-support/test-imageutil/generateConfigItem");
+//     process.chdir(workingDirectoryPath);
 //
 //     var assetConfig = {
 //

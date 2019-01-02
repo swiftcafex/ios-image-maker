@@ -30,7 +30,6 @@ function Config() {
 Config.prototype.addAssetItem = function(sourcePath, destPath) {
 
 	var item = new ConfigItemAsset();
-	item.configType = "assets";
 	item.sourcePath = sourcePath;
 	item.destPath = destPath;
 
@@ -48,7 +47,31 @@ Config.prototype.addIconItem = function (sourcePath, destPath) {
 
 }
 
+/***
+ * create default SourcePath in current working dir
+ */
+Config.prototype.createDefaultSourcesSync = function() {
 
+	let sourceDir = "./sourceImages";
+
+	if (fs.existsSync(sourceDir) == false) {
+
+		fs.mkdirSync(sourceDir);
+
+	}
+
+	let sourceAssets = path.join(sourceDir, "assets");
+	let sourceIcon = path.join(sourceDir, "icon");
+
+	if (fs.existsSync(sourceAssets) == false) {
+		fs.mkdirSync(sourceAssets);
+	}
+
+	if (fs.existsSync(sourceIcon) == false) {
+		fs.mkdirSync(sourceIcon);
+	}
+
+}
 // {
 //     "items": [
 //     {

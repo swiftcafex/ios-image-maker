@@ -8,8 +8,8 @@ var path = require("path");
 var fs = require("fs");
 var rmdir = require("rmdir");
 
-var workingDIR = path.join(__dirname, "_support/test-init");
-process.chdir(workingDIR);
+var workingDIR = path.join(__dirname, "test-support/test-init");
+// process.chdir(workingDirectoryPath);
 
 
 var defaultSourcePath = "./sourceImages";

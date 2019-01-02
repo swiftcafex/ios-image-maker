@@ -1,9 +1,0 @@
-{
-	"items": [
-		{
-			"configType": "assets",
-			"sourcePath": "input",
-			"destPath": "output"
-		}
-	]
-}

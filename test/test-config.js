@@ -2,39 +2,69 @@
 
 import test from 'ava';
 
+
+let testutil = require("../testutil/testutil");
+testutil.bindWorkingDIR("test-config");
+
 var Config = require("../config");
-var testutil = require("./util/testutil");
-testutil.bindWorkingDIR("_support/test-config");
+
 var path = require("path");
 var fs = require("fs");
 
-test.before(t => {
+test.before("create working dir", t => {
 
-    testutil.createAndChangeToWorkingDIR();
+    testutil.createAndChangeToWorkingDirectory();
 
 });
 
-test.after.always("", t => {
+test.after.always("clean working dir", t => {
 
     testutil.cleanWorkingDIR();
 
 });
 
-test("init config file", async t => {
+test.serial("create default source paths", t =>{
 
-    var dir = "./init-config";
+    let subdir = "create-default-sources";
+    testutil.createAndChangeToSubDir(subdir);
 
-    var config = new Config();
+    let config = new Config();
+    config.createDefaultSourcesSync();
 
-    config.configPath = path.join(workingDIR, dir, "config.json");
-    config.addAssetItem("input", "output");
+});
+
+test.serial("init config file", t => {
+
+    let subdir = "init-config";
+    testutil.createAndChangeToSubDir(subdir);
+
+    let config = new Config();
+
+    config.configPath = path.join(testutil.workingDirectoryPath, subdir, "config.json");
+    config.addAssetItem("./inputdir", "./outputdir");
     config.writeFile();
+
+    let expectedResult = {
+        "items": [
+            {
+                "configType": "assets",
+                "sourcePath": "./inputdir",
+                "destPath": "./outputdir"
+            }
+        ]
+    };
+
+
+    let fileContent = fs.readFileSync(config.configPath, "utf8");
+    let fileJSON = JSON.parse(fileContent);
+
+    t.is(JSON.stringify(fileJSON), JSON.stringify(expectedResult));
 
     t.pass();
 
 });
 
-test('read config from file', async t => {
+test.skip('read config from file', async t => {
 
     var configPath = "./image-config.json";
     var config = new Config();
@@ -54,7 +84,7 @@ test('read config from file', async t => {
 
 });
 
-test('parse config file items', async t => {
+test.skip('parse config file items', async t => {
 
     var configPath = "./image-config.json";
     var config = new Config();
@@ -80,11 +110,11 @@ test('parse config file items', async t => {
 
 });
 
-test('Config.init', async t => {
+test.skip('Config.init', async t => {
 
     var config = new Config();
 
-    var workingDIR = path.join(__dirname, "_support/test-config");
+    var workingDIR = path.join(__dirname, "test-support/test-config");
     process.chdir(workingDIR);
 
     await config.init().then(function(items){

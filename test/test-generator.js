@@ -4,7 +4,7 @@ import test from 'ava';
 var Generator = require("../func/generator");
 var path = require("path");
 
-var workingDIR = path.join(__dirname, "_support/test-generator");
+var workingDIR = path.join(__dirname, "test-support/test-generator");
 process.chdir(workingDIR);
 
 test('Generator.listFiles',async t => {
@@ -26,6 +26,7 @@ test('Generator.listFiles',async t => {
         t.truthy(err);
 
     });
+
     t.pass();
 
 });

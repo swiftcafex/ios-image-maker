@@ -2,7 +2,7 @@
 import test from 'ava';
 
 var AssetGenerator = require("../func/generator-asset");
-var supportCleaner = require("./_support/_support-cleaner");
+var supportCleaner = require("./test-support/_support-cleaner");
 var path = require("path");
 var fs = require("fs.extra");
 
@@ -10,15 +10,15 @@ function clean() {
 
     return supportCleaner.cleanSupportDir([
         {
-            "cwd" : path.join(__dirname, "_support/test-generator-asset/generateImageSetFolder"),
+            "cwd" : path.join(__dirname, "test-support/test-generator-asset/generateImageSetFolder"),
             "dir" : "./output/Assets.xcassets/"
         },
         {
-            "cwd" : path.join(__dirname, "_support/test-generator-asset/generateImageSetImages"),
+            "cwd" : path.join(__dirname, "test-support/test-generator-asset/generateImageSetImages"),
             "dir" : "./output/Assets.xcassets/"
         },
         {
-            "cwd" : path.join(__dirname, "_support/test-generator-asset/startGenerateImages"),
+            "cwd" : path.join(__dirname, "test-support/test-generator-asset/startGenerateImages"),
             "dir" : "./output/Assets.xcassets/"
         }
     ]);
@@ -38,7 +38,7 @@ test.after(async t => {
 
 test('AssetGenerator.generateImageSetFolder',async t => {
 
-    var workingDIR = path.join(__dirname, "_support/test-generator-asset/generateImageSetFolder");
+    var workingDIR = path.join(__dirname, "test-support/test-generator-asset/generateImageSetFolder");
     process.chdir(workingDIR);
 
     var generator = new AssetGenerator();
@@ -59,7 +59,7 @@ test('AssetGenerator.generateImageSetFolder',async t => {
 
 test('AssetGenerator.generateImageSetImages',async t => {
 
-    var workingDIR = path.join(__dirname, "_support/test-generator-asset/generateImageSetImages");
+    var workingDIR = path.join(__dirname, "test-support/test-generator-asset/generateImageSetImages");
     process.chdir(workingDIR);
 
     var generator = new AssetGenerator();
@@ -95,7 +95,7 @@ test('AssetGenerator.generateImageSetImages',async t => {
 
 test('AssetGenerator.startGenerateImages',async t => {
 
-    var workingDIR = path.join(__dirname, "_support/test-generator-asset/startGenerateImages");
+    var workingDIR = path.join(__dirname, "test-support/test-generator-asset/startGenerateImages");
     process.chdir(workingDIR);
 
     var generator = new AssetGenerator();
