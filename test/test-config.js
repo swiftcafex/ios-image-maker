@@ -3,14 +3,22 @@
 import test from 'ava';
 
 var Config = require("../config");
+var testutil = require("./util/testutil");
+testutil.bindWorkingDIR("_support/test-config");
 var path = require("path");
 var fs = require("fs");
 
-var workingDIR = path.join(__dirname, "_support/test-config");
-process.chdir(workingDIR);
+test.before(t => {
 
+    testutil.createAndChangeToWorkingDIR();
 
+});
 
+test.after.always("", t => {
+
+    testutil.cleanWorkingDIR();
+
+});
 
 test("init config file", async t => {
 
@@ -21,6 +29,8 @@ test("init config file", async t => {
     config.configPath = path.join(workingDIR, dir, "config.json");
     config.addAssetItem("input", "output");
     config.writeFile();
+
+    t.pass();
 
 });
 
