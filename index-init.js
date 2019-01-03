@@ -1,8 +1,9 @@
-var doInit = require("./func/command.init.func");
+var commandInit = require("./func/command-init");
 const chalk = require('chalk');
 
-doInit(function(){
-
-    console.log(chalk.green("Config file " + configPath + " created."));
-
-});
+commandInit.doInit();
+// doInit(function(){
+//
+//     console.log(chalk.green("Config file " + configPath + " created."));
+//
+// });

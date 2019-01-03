@@ -26,7 +26,11 @@ function Config() {
 
 }
 
-
+/***
+ * add asset image item
+ * @param sourcePath	source image path
+ * @param destPath		generated image path
+ */
 Config.prototype.addAssetItem = function(sourcePath, destPath) {
 
 	var item = new ConfigItemAsset();
@@ -37,6 +41,11 @@ Config.prototype.addAssetItem = function(sourcePath, destPath) {
 
 };
 
+/***
+ * add icon image item
+ * @param sourcePath	source image path
+ * @param destPath		generated image path
+ */
 Config.prototype.addIconItem = function (sourcePath, destPath) {
 
 	var item = new ConfigItemIcon();

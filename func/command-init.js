@@ -1,13 +1,79 @@
 let fs = require('fs');
+let path = require("path");
+
 let Config = require("../config");
 
 // Initialize
 
 function CommandInit() {
 
+    this.defaultSourceDirectory = "./sourceImages";
+    this.defaultAssetName = "assets";
+    this.defaultIconName = "icon";
+
 }
 
 CommandInit.prototype.doInit = function() {
+
+    console.log("create ./sourceImages");
+
+    if(this.createDefaultSourcePaths()) {
+
+
+
+    } else {
+
+        console.log("the directory ./sourceImages already exists. ");
+
+    }
+
+};
+
+
+/***
+ * Create paths for source images.
+ *
+ * @return return true if create success.  false if source dir already exists.
+ */
+CommandInit.prototype.createDefaultSourcePaths = function() {
+
+
+    if (fs.existsSync(this.defaultSourceDirectory) == false) {
+
+        fs.mkdirSync(this.defaultSourceDirectory);
+
+    } else {
+
+        return false;
+
+    }
+
+    let sourceAssets = path.join(this.defaultSourceDirectory, this.defaultAssetName);
+    let sourceIcon = path.join(this.defaultSourceDirectory, this.defaultIconName);
+
+    if (fs.existsSync(sourceAssets) == false) {
+        fs.mkdirSync(sourceAssets);
+    }
+
+    if (fs.existsSync(sourceIcon) == false) {
+        fs.mkdirSync(sourceIcon);
+    }
+
+    return true;
+
+};
+
+
+CommandInit.prototype.findAssetPath = function () {
+
+
+
+};
+
+CommandInit.prototype.findXcodeProjectFilePath = function () {
+
+    let contents = fs.readdirSync("./");
+
 
 };
 

@@ -8,17 +8,8 @@ let rimraf = require("rimraf");
  */
 function TestUtil() {
 
-    this.workingDirectoryName = "";
     this.workingDirectoryPath = "";
-
-    this.subDirectoryName = "";
     this.subDirectoryPath = "";
-
-}
-
-TestUtil.prototype.bindWorkingDIR = function (dirName) {
-
-    this.workingDirectoryPath = path.join(__dirname, "../", "test/test-support", dirName);
 
 }
 
@@ -30,7 +21,6 @@ TestUtil.prototype.bindWorkingDIR = function (dirName) {
  */
 TestUtil.prototype.createAndChangeToWorkingDirectory = function (dirName) {
 
-    this.workingDirectoryName = dirName;
     this.workingDirectoryPath = path.join(__dirname, "../", "test/test-support", dirName);
 
     if(fs.existsSync(this.workingDirectoryPath) == false) {
@@ -43,31 +33,35 @@ TestUtil.prototype.createAndChangeToWorkingDirectory = function (dirName) {
 
 };
 
-
+/***
+ * Create sub directory and change to it.
+ * @param dirName       sub directory name
+ * @returns {boolean}   if create success
+ */
 TestUtil.prototype.createAndChangeToSubDirectory = function(dirName) {
 
-    this.subDirectoryName = dirName;
     this.subDirectoryPath = path.join(this.workingDirectoryPath, dirName);
 
     if(fs.existsSync(this.workingDirectoryPath)) {
 
-        let subdir = path.join(this.workingDirectoryPath, dirName);
-
         if(fs.existsSync(this.subDirectoryPath) == false) {
 
-            fs.mkdirSync(subdir);
+            fs.mkdirSync(this.subDirectoryPath);
+            process.chdir(this.subDirectoryPath);
+            return true;
 
         }
 
     } else {
 
+        // working directory not exists, return false.
         return false;
 
     }
 
 }
 
-TestUtil.prototype.cleanWorkingDIR = function () {
+TestUtil.prototype.cleanWorkingDirectory = function () {
 
     if(fs.existsSync(this.workingDirectoryPath)) {
 

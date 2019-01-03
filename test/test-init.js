@@ -2,7 +2,7 @@
 
 import test from 'ava';
 
-var initFunc = require("../func/command.init.func");
+var initFunc = require("../func/command-init");
 
 var path = require("path");
 var fs = require("fs");

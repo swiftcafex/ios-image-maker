@@ -4,7 +4,7 @@ import test from 'ava';
 
 
 let testutil = require("../testutil/testutil");
-testutil.bindWorkingDIR("test-config");
+let commandInit = require("../func/command-init");
 
 var Config = require("../config");
 
@@ -13,35 +13,59 @@ var fs = require("fs");
 
 test.before("create working dir", t => {
 
-    testutil.createAndChangeToWorkingDirectory();
+    testutil.createAndChangeToWorkingDirectory("test-config");
 
 });
 
 test.after.always("clean working dir", t => {
 
-    testutil.cleanWorkingDIR();
+    testutil.cleanWorkingDirectory();
+
+});
+
+test.serial("do init command", t=> {
+
+    let subdir = "do-init";
+    testutil.createAndChangeToSubDirectory(subdir);
+
+    commandInit.doInit();
+
+    t.is(fs.existsSync(commandInit.defaultSourceDirectory), true);
+    t.is(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultAssetName)), true);
+    t.is(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultIconName)), true);
+
+
 
 });
 
 test.serial("create default source paths", t =>{
 
     let subdir = "create-default-sources";
-    testutil.createAndChangeToSubDir(subdir);
+    testutil.createAndChangeToSubDirectory(subdir);
 
-    let config = new Config();
-    config.createDefaultSourcesSync();
+    let success = commandInit.createDefaultSourcePaths();
+    t.is(success, true);
+
+    t.is(fs.existsSync(commandInit.defaultSourceDirectory), true);
+    t.is(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultAssetName)), true);
+    t.is(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultIconName)), true);
+
+
+    // path already exists, should fail.
+    let shouldFailed = commandInit.createDefaultSourcePaths();
+    t.is(shouldFailed, false);
 
 });
 
 test.serial("init config file", t => {
 
     let subdir = "init-config";
-    testutil.createAndChangeToSubDir(subdir);
+    testutil.createAndChangeToSubDirectory(subdir);
 
     let config = new Config();
 
-    config.configPath = path.join(testutil.workingDirectoryPath, subdir, "config.json");
     config.addAssetItem("./inputdir", "./outputdir");
+    config.addIconItem("./inputicon", "./outputicon")
     config.writeFile();
 
     let expectedResult = {
@@ -50,12 +74,17 @@ test.serial("init config file", t => {
                 "configType": "assets",
                 "sourcePath": "./inputdir",
                 "destPath": "./outputdir"
+            },
+            {
+                "configType": "icon",
+                "sourcePath": "./inputicon",
+                "destPath": "./outputicon"
             }
         ]
     };
 
-
-    let fileContent = fs.readFileSync(config.configPath, "utf8");
+    let destPath = path.join(testutil.workingDirectoryPath, subdir, "image-config.json");
+    let fileContent = fs.readFileSync(destPath, "utf8");
     let fileJSON = JSON.parse(fileContent);
 
     t.is(JSON.stringify(fileJSON), JSON.stringify(expectedResult));
@@ -91,7 +120,7 @@ test.skip('parse config file items', async t => {
 
     t.true(fs.existsSync(configPath));
 
-    var configContent = fs.readFileSync(configPath, "utf8");
+    var  configContent = fs.readFileSync(configPath, "utf8");
 
     await config.parseFile(configContent).then(function(items){
 
