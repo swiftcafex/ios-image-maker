@@ -14,7 +14,7 @@ var fs = require("fs");
 
 test.before("create working dir", t => {
 
-    testutil.createAndChangeToWorkingDirectory("test-config");
+    testutil.createAndChangeToWorkingDirectory("test-command-init");
 
 });
 
@@ -25,7 +25,11 @@ test.after.always("clean working dir", t => {
 });
 
 
-test.serial("file asset folder path", t => {
+test.serial("find asset folder path", t => {
+
+    t.plan(1);
+    let subdir = "find-asset-path";
+    testutil.createAndChangeToSubDirectory(subdir);
 
     // create project files
     var dirname = "./test.xcodeproj";
@@ -35,9 +39,9 @@ test.serial("file asset folder path", t => {
     fs.writeFileSync(path.join(dirname, filename));
 
     let projFilePath = testutil.getSupportFilePath("sample-project.pbxproj");
-    commandInit.findAssetPathFromProject(projFilePath);
+    let assetPath = commandInit.findAssetPathFromProject(projFilePath);
 
-    t.pass();
+    t.is(assetPath, "merger22/Comps/Assets.xcassets");
 
 });
 
@@ -69,13 +73,25 @@ test.serial("do init command", t=> {
     let subdir = "do-init";
     testutil.createAndChangeToSubDirectory(subdir);
 
+    // create project file
+    let projFolder = "merger22.xcodeproj";
+    fs.mkdirSync(projFolder);
+
+    let projFilePath = path.join(projFolder, "project.pbxproj");
+    let projContent = testutil.loadSupportFile("sample-project.pbxproj");
+    fs.writeFileSync(projFilePath, projContent);
+
     commandInit.doInit();
 
     t.is(fs.existsSync(commandInit.defaultSourceDirectory), true);
     t.is(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultAssetName)), true);
     t.is(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultIconName)), true);
 
+    let configFilePath = "./image-config.json";
+    t.is(fs.existsSync(configFilePath), true);
 
+    let configContent = fs.readFileSync(configFilePath, "utf-8");
+    console.log(configContent);
 
 });
 
@@ -84,8 +100,11 @@ test.serial("create default source paths", t =>{
     let subdir = "create-default-sources";
     testutil.createAndChangeToSubDirectory(subdir);
 
-    let success = commandInit.createDefaultSourcePaths();
-    t.is(success, true);
+    let paths = commandInit.createDefaultSourcePaths();
+    t.is(JSON.stringify(paths), JSON.stringify({
+        "asset": 'sourceImages/assets',
+        "icon": 'sourceImages/icon',
+    }));
 
     t.is(fs.existsSync(commandInit.defaultSourceDirectory), true);
     t.is(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultAssetName)), true);

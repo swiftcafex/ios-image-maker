@@ -16,17 +16,46 @@ function CommandInit() {
 
 CommandInit.prototype.doInit = function() {
 
-    console.log("create ./sourceImages");
+    // find project folder in current working directory.
+    let xcodeProjectPath = this.findXcodeProjectFilePath();
 
-    if(this.createDefaultSourcePaths()) {
+    if(xcodeProjectPath) {
 
+        let assetPath = this.findAssetPathFromProject(xcodeProjectPath);
+
+        if(assetPath) {
+
+            let paths = this.createDefaultSourcePaths();
+
+            if(paths) {
+
+                let config = new Config();
+                config.addAssetItem(paths.asset,assetPath);
+                config.addIconItem(paths.icon, assetPath);
+                config.writeFile();
+
+                console.log("init finished.");
+
+            } else {
+
+                console.log("the directory ./sourceImages already exists. ");
+
+            }
+
+        } else {
+
+            console.log("can not find asset path in your project.");
+
+        }
 
 
     } else {
 
-        console.log("the directory ./sourceImages already exists. ");
+        console.log("can not find xcode project file.");
 
     }
+
+
 
 };
 
@@ -53,14 +82,18 @@ CommandInit.prototype.createDefaultSourcePaths = function() {
     let sourceIcon = path.join(this.defaultSourceDirectory, this.defaultIconName);
 
     if (fs.existsSync(sourceAssets) == false) {
+
         fs.mkdirSync(sourceAssets);
+
     }
 
     if (fs.existsSync(sourceIcon) == false) {
+
         fs.mkdirSync(sourceIcon);
+
     }
 
-    return true;
+    return {"asset": sourceAssets, "icon": sourceIcon };
 
 };
 
@@ -100,15 +133,16 @@ CommandInit.prototype.findAssetPathFromProject = function (projectFilePath) {
 
         proj.parseSync();
 
-        var fileReferences = proj.pbxFileReferenceSection();
+        let fileReferences = proj.pbxFileReferenceSection();
 
-        var projectSecion = proj.pbxProjectSection();
-        var mainGroupID = projectSecion[Object.keys(projectSecion)[0]].mainGroup;
+        let projectSecion = proj.pbxProjectSection();
+        let mainGroupID = projectSecion[Object.keys(projectSecion)[0]].mainGroup;
 
         var assetPath;
         var assetKey;
 
-        for(var key in fileReferences) {
+        // find asset id
+        for(let key in fileReferences) {
 
             if(fileReferences[key].isa) {
 
@@ -129,8 +163,8 @@ CommandInit.prototype.findAssetPathFromProject = function (projectFilePath) {
 
         if(assetKey) {
 
-            var currentItemID = assetKey;
-            var pathList = [];
+            let currentItemID = assetKey;
+            let pathList = [];
             // asset founded, check the group.
             do {
 
@@ -141,20 +175,23 @@ CommandInit.prototype.findAssetPathFromProject = function (projectFilePath) {
             } while(mainGroupID && (assetGroupID.key != mainGroupID));
 
             pathList.push(assetPath);
-            console.log(path.join(pathList));
-            // console.log("group id: " + assetGroupID.key + ":" + assetGroupID.path);
+
+
+            var assetFullPath = "./";
+
+            pathList.forEach(function (item) {
+
+                assetFullPath = path.join(assetFullPath, item);
+
+            });
+
+            return assetFullPath;
 
         }
-        // pp.forEach(function (item) {
-        //     console.log(item["name"]);
-        // })
-        // console.log(pp);
-
-    } else {
-
-        return false;
 
     }
+
+    return false;
 
 }
 
