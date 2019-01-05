@@ -91,7 +91,22 @@ test.serial("do init command", t=> {
     t.is(fs.existsSync(configFilePath), true);
 
     let configContent = fs.readFileSync(configFilePath, "utf-8");
-    console.log(configContent);
+    let expectedContent = {
+        "items": [
+            {
+                "type": "assets",
+                "sourcePath": "sourceImages/assets",
+                "destPath": "merger22/Comps/Assets.xcassets"
+            },
+            {
+                "type": "icon",
+                "sourcePath": "sourceImages/icon",
+                "destPath": "merger22/Comps/Assets.xcassets"
+            }
+        ]
+    };
+
+    t.is(JSON.stringify(JSON.parse(configContent)), JSON.stringify(expectedContent));
 
 });
 
@@ -102,8 +117,10 @@ test.serial("create default source paths", t =>{
 
     let paths = commandInit.createDefaultSourcePaths();
     t.is(JSON.stringify(paths), JSON.stringify({
+
         "asset": 'sourceImages/assets',
         "icon": 'sourceImages/icon',
+
     }));
 
     t.is(fs.existsSync(commandInit.defaultSourceDirectory), true);
@@ -131,12 +148,12 @@ test.serial("init config file", t => {
     let expectedResult = {
         "items": [
             {
-                "configType": "assets",
+                "type": "assets",
                 "sourcePath": "./inputdir",
                 "destPath": "./outputdir"
             },
             {
-                "configType": "icon",
+                "type": "icon",
                 "sourcePath": "./inputicon",
                 "destPath": "./outputicon"
             }

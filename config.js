@@ -5,7 +5,7 @@ var fs = require("fs");
 
 function ConfigItemAsset() {
 
-	this.configType = "assets";
+	this.type = "assets";
 	this.sourcePath = "";
 	this.destPath = "";
 
@@ -13,7 +13,7 @@ function ConfigItemAsset() {
 
 function ConfigItemIcon() {
 
-    this.configType = "icon";
+    this.type = "icon";
     this.sourcePath = "";
     this.destPath = "";
 
@@ -57,126 +57,29 @@ Config.prototype.addIconItem = function (sourcePath, destPath) {
 }
 
 /***
- * create default SourcePath in current working dir
+ * Write config to file.
  */
-Config.prototype.createDefaultSourcesSync = function() {
-
-	let sourceDir = "./sourceImages";
-
-	if (fs.existsSync(sourceDir) == false) {
-
-		fs.mkdirSync(sourceDir);
-
-	}
-
-	let sourceAssets = path.join(sourceDir, "assets");
-	let sourceIcon = path.join(sourceDir, "icon");
-
-	if (fs.existsSync(sourceAssets) == false) {
-		fs.mkdirSync(sourceAssets);
-	}
-
-	if (fs.existsSync(sourceIcon) == false) {
-		fs.mkdirSync(sourceIcon);
-	}
-
-}
-// {
-//     "items": [
-//     {
-//         "type": "assets",
-//         "sourcePath": "./sourceImages/assets",
-//         "destPath": "./output/Assets.xcassets"
-//     },
-//     {
-//         "type": "icon",
-//         "sourcePath": "./sourceImages/icon",
-//         "destPath": "./output/Assets.xcassets",
-//         "name": "Icon"
-//     }
-// ]
-// }
 Config.prototype.writeFile = function() {
 
-	var jsonResult = {
+	let jsonResult = {
 
 		"items": this.items
 
     }
 
-    var jsonString = JSON.stringify(jsonResult, null, "\t");
+	let jsonString = JSON.stringify(jsonResult, null, "\t");
 	fs.writeFileSync(this.configPath, jsonString);
 
 }
 
-// Read config file
-Config.prototype.readFile = function() {
-	
-	var that = this;
+Config.prototype.loadConfig = function() {
 
-	return new Promise(function(resolve, reject){
-
-		fs.readFile(that.configPath, "utf-8", function(err, data){
-			
-			if(err) {
-
-				reject(err);
-
-			} else {
-
-                resolve(data);
-
-			}
-
-		});		
-
-	});
-	
-};
-
-// Parse content of config file.
-Config.prototype.parseFile = function(data) {
-	
-	return new Promise(function(resolve, reject){
-
-		try {
-
-			var config = JSON.parse(data);
-			var items = config.items;
-			
-			if(items) {
-
-                resolve(items);
-
-			} else {
-
-				reject("items parse failed.");
-
-			}
-
-		} catch (ex) {
-
-			reject(ex);
-
-		}
-
-	});	
+	let configFileContent = fs.readFileSync(this.conf, 'utf-8');
+	let jsonObj = JSON.parse(configFileContent);
+	this.items = jsonObj["items"];
+	return this.items;
 
 };
 
-Config.prototype.init = function() {
-
-	var self = this;
-	return this.readFile().then(function(data) {
-		
-		return self.parseFile(data);
-
-	}).catch(function(err){
-
-		// config file does not exist.
-
-	});
-
-};
 
 module.exports = Config;

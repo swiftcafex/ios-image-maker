@@ -2,13 +2,11 @@
  * Created by cafe on 2017/11/18.
  */
 
-var fs = require('fs');
-var path = require('path');
-var jimp = require('jimp');
+let fs = require('fs');
+let path = require('path');
+let jimp = require('jimp');
 
 function BaseGenerator() {
-
-
 
 }
 

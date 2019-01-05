@@ -1,15 +1,31 @@
-
 import test from 'ava';
+
+let testutil = require("../testutil/testutil");
 
 var Generator = require("../func/generator");
 var path = require("path");
+var fs = require("fs");
 
 var workingDIR = path.join(__dirname, "test-support/test-generator");
 process.chdir(workingDIR);
 
+test.before("create working dir", t => {
+
+    testutil.createAndChangeToWorkingDirectory("test-generator");
+    let listFilePath = testutil.getSupportFilePath("listFiles");
+    fs.copyFileSync(listFilePath, "./");
+
+});
+
+test.after.always("clean working dir", t => {
+
+    testutil.cleanWorkingDirectory();
+
+});
+
 test('Generator.listFiles',async t => {
 
-    var generator = new Generator();
+    let generator = new Generator();
 
     await generator.listFiles("./listFiles").then(function(files){
 
