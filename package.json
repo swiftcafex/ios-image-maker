@@ -24,7 +24,8 @@
     "promise": "^7.3.1",
     "queue": "^4.5.1",
     "rmdir": "^1.2.0",
-    "shelljs": "^0.7.8"
+    "shelljs": "^0.7.8",
+    "xcode": "^1.1.0"
   },
   "devDependencies": {
     "ava": "^0.23.0",

@@ -11,6 +11,7 @@ var Config = require("../config");
 var path = require("path");
 var fs = require("fs");
 
+
 test.before("create working dir", t => {
 
     testutil.createAndChangeToWorkingDirectory("test-config");
@@ -20,6 +21,46 @@ test.before("create working dir", t => {
 test.after.always("clean working dir", t => {
 
     testutil.cleanWorkingDirectory();
+
+});
+
+
+test.serial("file asset folder path", t => {
+
+    // create project files
+    var dirname = "./test.xcodeproj";
+    fs.mkdirSync(dirname);
+
+    var filename = "project.pbxproj"
+    fs.writeFileSync(path.join(dirname, filename));
+
+    let projFilePath = testutil.getSupportFilePath("sample-project.pbxproj");
+    commandInit.findAssetPathFromProject(projFilePath);
+
+    t.pass();
+
+});
+
+test.serial("find xcode project file", t => {
+
+    let subdir = "xcode-proj";
+    testutil.createAndChangeToSubDirectory(subdir);
+
+    // no project file, should return false.
+    let nonexistFilePath = commandInit.findXcodeProjectFilePath();
+    t.is(nonexistFilePath, false);
+
+    // create project files
+    var dirname = "./test.xcodeproj";
+    fs.mkdirSync(dirname);
+
+    var filename = "project.pbxproj"
+    fs.writeFileSync(path.join(dirname, filename));
+
+    // project file should exist
+    let filePath = commandInit.findXcodeProjectFilePath();
+    let expectedPath = path.join(dirname, filename);
+    t.is(filePath, expectedPath);
 
 });
 

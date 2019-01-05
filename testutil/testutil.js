@@ -8,7 +8,10 @@ let rimraf = require("rimraf");
  */
 function TestUtil() {
 
-    this.workingDirectoryPath = "";
+    this.testSupportContainer = path.join(__dirname, "../", "test/test-support");
+    this.testPreloadContainer = path.join(this.testSupportContainer, "preload-files");
+
+    this.workingDirectoryPath = ""
     this.subDirectoryPath = "";
 
 }
@@ -21,7 +24,7 @@ function TestUtil() {
  */
 TestUtil.prototype.createAndChangeToWorkingDirectory = function (dirName) {
 
-    this.workingDirectoryPath = path.join(__dirname, "../", "test/test-support", dirName);
+    this.workingDirectoryPath = path.join(this.testSupportContainer, dirName);
 
     if(fs.existsSync(this.workingDirectoryPath) == false) {
 
@@ -71,6 +74,17 @@ TestUtil.prototype.cleanWorkingDirectory = function () {
 
 };
 
+TestUtil.prototype.loadSupportFile = function (name) {
 
+    let filePath = path.join(this.testPreloadContainer, name);
+    return fs.readFileSync(filePath);
+
+};
+
+TestUtil.prototype.getSupportFilePath = function (name) {
+
+    return path.join(this.testPreloadContainer, name);
+
+};
 
 module.exports = new TestUtil();
