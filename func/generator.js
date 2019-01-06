@@ -36,9 +36,7 @@ BaseGenerator.prototype.listFiles = function(folderPath) {
 
     });
 
-
 };
-
 
 
 /**

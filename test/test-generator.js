@@ -4,16 +4,18 @@ let testutil = require("../testutil/testutil");
 
 var Generator = require("../func/generator");
 var path = require("path");
-var fs = require("fs");
-
-var workingDIR = path.join(__dirname, "test-support/test-generator");
-process.chdir(workingDIR);
+const fs = require("fs");
+const fse = require('fs-extra');
 
 test.before("create working dir", t => {
 
     testutil.createAndChangeToWorkingDirectory("test-generator");
-    let listFilePath = testutil.getSupportFilePath("listFiles");
-    fs.copyFileSync(listFilePath, "./");
+
+    let listFilePath = testutil.getSupportFilePath("images-for-generator");
+    console.log(listFilePath);
+    console.log("cwd" + process.cwd());
+
+    fse.copySync(listFilePath, "./images-for-generator");
 
 });
 
@@ -27,11 +29,11 @@ test('Generator.listFiles',async t => {
 
     let generator = new Generator();
 
-    await generator.listFiles("./listFiles").then(function(files){
+    await generator.listFiles("./images-for-generator").then(function(files){
 
         t.is(files.length, 2);
-        t.is(files[0], 'listFiles/cloud.jpg');
-        t.is(files[1], 'listFiles/disk.jpg');
+        t.is(files[0], 'images-for-generator/cloud.jpg');
+        t.is(files[1], 'images-for-generator/disk.jpg');
 
     });
 

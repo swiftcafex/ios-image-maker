@@ -39,46 +39,6 @@ AssetGenerator.prototype.generateImageSetFolder = function(sourceFilePath, asset
     }
 
     return self.generateContentJSON(imagesetFolder);
-    // return new Promise(function(resolve, reject){
-    //
-    //     // ./sourceImages/assets/[cloud].jpg && [./image-example/Assets.xcassets] => ./image-example/Assets.xcassets/cloud.imageset
-    //     var imagesetFolder = path.join(assetPath, path.basename(sourceFilePath, path.extname(sourceFilePath))) + ".imageset";
-    //
-    //     if(!fs.existsSync(imagesetFolder)) {
-    //
-    //         console.log("create folder: " + imagesetFolder);
-    //         console.log("cwd: " + process.cwd());
-    //
-    //         mkdirp(imagesetFolder, function(err) {
-    //
-    //             if(err) {
-    //
-    //                 console.log("create folder failed " + err);
-    //                 reject(err);
-    //
-    //             } else {
-    //
-    //                 console.log("create folder success cwd" + process.cwd());
-    //                 console.log("create folder success" + imagesetFolder);
-    //                 resolve(imagesetFolder);
-    //
-    //             }
-    //
-    //         });
-    //
-    //     } else {
-    //
-    //         resolve(imagesetFolder);
-    //
-    //     }
-    //
-    // }).then(function (imagesetFolder) {
-    //
-    //     var exist = fs.existsSync(imagesetFolder);
-    //     console.log("then path exist " + exist);
-    //     return self.generateContentJSON(imagesetFolder);
-    //
-    // });
 
 };
 

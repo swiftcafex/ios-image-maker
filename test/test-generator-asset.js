@@ -1,55 +1,89 @@
 
 import test from 'ava';
 
+let testutil = require("../testutil/testutil");
+
 var AssetGenerator = require("../func/generator-asset");
-var supportCleaner = require("./test-support/_support-cleaner");
+// var supportCleaner = require("./test-support/_support-cleaner");
+
 var path = require("path");
-var fs = require("fs.extra");
+var fs = require("fs");
+var fse = require("fs-extra");
 
-function clean() {
+// function clean() {
+//
+//     return supportCleaner.cleanSupportDir([
+//         {
+//             "cwd" : path.join(__dirname, "test-support/test-generator-asset/generateImageSetFolder"),
+//             "dir" : "./output/Assets.xcassets/"
+//         },
+//         {
+//             "cwd" : path.join(__dirname, "test-support/test-generator-asset/generateImageSetImages"),
+//             "dir" : "./output/Assets.xcassets/"
+//         },
+//         {
+//             "cwd" : path.join(__dirname, "test-support/test-generator-asset/startGenerateImages"),
+//             "dir" : "./output/Assets.xcassets/"
+//         }
+//     ]);
+// }
 
-    return supportCleaner.cleanSupportDir([
-        {
-            "cwd" : path.join(__dirname, "test-support/test-generator-asset/generateImageSetFolder"),
-            "dir" : "./output/Assets.xcassets/"
-        },
-        {
-            "cwd" : path.join(__dirname, "test-support/test-generator-asset/generateImageSetImages"),
-            "dir" : "./output/Assets.xcassets/"
-        },
-        {
-            "cwd" : path.join(__dirname, "test-support/test-generator-asset/startGenerateImages"),
-            "dir" : "./output/Assets.xcassets/"
-        }
-    ]);
-}
+// test.before(async t => {
+//
+//     await clean().then(function(){ });
+//
+// });
+//
+// test.after(async t => {
+//
+//     await clean().then(function(){ });
+//
+// });
 
-test.before(async t => {
+test.before("create working dir", t => {
 
-    await clean().then(function(){ });
+    testutil.createAndChangeToWorkingDirectory("test-generator-asset");
 
 });
 
-test.after(async t => {
+test.after.always("clean working dir", t => {
 
-    await clean().then(function(){ });
+    testutil.cleanWorkingDirectory();
 
 });
 
-test('AssetGenerator.generateImageSetFolder',async t => {
+test.serial('generate imageset folder',async t => {
 
-    var workingDIR = path.join(__dirname, "test-support/test-generator-asset/generateImageSetFolder");
-    process.chdir(workingDIR);
+    // preload
+    testutil.createAndChangeToSubDirectory("generateImageSetFolder");
 
+    let sourceFolderName = "images-for-generator";
+    let listFilePath = testutil.getSupportFilePath(sourceFolderName);
+    fse.copySync(listFilePath, sourceFolderName);
+    let files = fse.readdirSync(sourceFolderName);
+    t.true(files.length > 0);
+    let sourcePath = path.join(sourceFolderName,files[0]);
+
+    // test
     var generator = new AssetGenerator();
 
     t.false(fs.existsSync("./output/Assets.xcassets/cloud.imageset"));
     t.false(fs.existsSync("./output/Assets.xcassets/cloud.imageset/Contents.json"));
 
-    await generator.generateImageSetFolder("./source/cloud.jpg", "./output/Assets.xcassets").then(function(imagesetPath){
+    await generator.generateImageSetFolder(sourcePath, "./output/Assets.xcassets").then(function(imagesetPath){
 
         t.true(fs.existsSync("./output/Assets.xcassets/cloud.imageset"));
         t.true(fs.existsSync("./output/Assets.xcassets/cloud.imageset/Contents.json"));
+
+        let expectedResult = {
+            "info": {
+                "version": 1,
+                "author": "xcode"
+            }
+        };
+
+        let content = fs.readFileSync("./output/Assets.xcassets/cloud.imageset/Contents.json", "utf-8");
+        t.is(JSON.stringify(JSON.parse(content)), JSON.stringify(expectedResult));
 
     });
 
@@ -57,11 +91,20 @@ test('AssetGenerator.generateImageSetFolder',async t => {
 
 });
 
-test('AssetGenerator.generateImageSetImages',async t => {
+test.serial('AssetGenerator.generateImageSetImages',async t => {
 
-    var workingDIR = path.join(__dirname, "test-support/test-generator-asset/generateImageSetImages");
-    process.chdir(workingDIR);
+    // preload
+    testutil.createAndChangeToSubDirectory("generateImageSetImages");
 
+    let sourceFolderName = "images-for-generator";
+    let listFilePath = testutil.getSupportFilePath(sourceFolderName);
+    fse.copySync(listFilePath, sourceFolderName);
+    let files = fse.readdirSync(sourceFolderName);
+    t.true(files.length > 0);
+    let sourcePath = path.join(sourceFolderName,files[0]);
+
+
+    // test
     var generator = new AssetGenerator();
 
     t.false(fs.existsSync("./output/Assets.xcassets/cloud.imageset"));
@@ -71,10 +114,10 @@ test('AssetGenerator.generateImageSetImages',async t => {
     t.false(fs.existsSync("./output/Assets.xcassets/cloud.imageset/cloud@3x.jpg"));
 
     //Step1: generate .imageset folder
-    await generator.generateImageSetFolder("./source/cloud.jpg", "./output/Assets.xcassets").then(function(imagesetPath){
+    await generator.generateImageSetFolder(sourcePath, "./output/Assets.xcassets").then(function(imagesetPath){
 
         //Step2: copy and resize source image to .imageset folder
-        generator.generateImagesetImages("./source/cloud.jpg", imagesetPath).then(function(){
+        generator.generateImagesetImages(sourcePath, imagesetPath).then(function(){
 
             // Image files should be created.
 
@@ -93,17 +136,63 @@ test('AssetGenerator.generateImageSetImages',async t => {
 
 });
 
-test('AssetGenerator.startGenerateImages',async t => {
+test.serial('AssetGenerator.startGenerateImages',async t => {
 
-    var workingDIR = path.join(__dirname, "test-support/test-generator-asset/startGenerateImages");
-    process.chdir(workingDIR);
+    // preload
+    testutil.createAndChangeToSubDirectory("generateImageSetImages");
 
+    let sourceFolderName = "images-for-generator";
+    let listFilePath = testutil.getSupportFilePath(sourceFolderName);
+    fse.copySync(listFilePath, sourceFolderName);
+    let files = fse.readdirSync(sourceFolderName);
+    t.true(files.length > 0);
+    let sourcePath = path.join(sourceFolderName,files[0]);
+
+
+    // test
     var generator = new AssetGenerator();
 
-    var sourcePath = "./source";
     var assetPath = "./output/Assets.xcassets";
 
-    await generator.startGenerateImages(sourcePath, assetPath).then(function() {
+    await generator.startGenerateImages(sourceFolderName, assetPath).then(function() {
+
+        t.true(fs.existsSync("./output/Assets.xcassets/cloud.imageset"));
+        t.true(fs.existsSync("./output/Assets.xcassets/cloud.imageset/Contents.json"));
+        t.true(fs.existsSync("./output/Assets.xcassets/cloud.imageset/cloud.jpg"));
+        t.true(fs.existsSync("./output/Assets.xcassets/cloud.imageset/cloud@2x.jpg"));
+        t.true(fs.existsSync("./output/Assets.xcassets/cloud.imageset/cloud@3x.jpg"));
+
+        let content = fs.readFileSync("./output/Assets.xcassets/cloud.imageset/Contents.json", "utf-8");
+        let expectedResult = {
+            "images": [
+                {
+                    "idiom": "universal",
+                    "filename": "cloud.jpg",
+                    "scale": "1x"
+                },
+                {
+                    "idiom": "universal",
+                    "filename": "cloud@2x.jpg",
+                    "scale": "2x"
+                },
+                {
+                    "idiom": "universal",
+                    "filename": "cloud@3x.jpg",
+                    "scale": "3x"
+                }
+            ],
+            "info": {
+                "version": 1,
+                "author": "xcode"
+            }
+        };
+        t.is(JSON.stringify(JSON.parse(content)), JSON.stringify(expectedResult));
+
+        t.true(fs.existsSync("./output/Assets.xcassets/disk.imageset"));
+        t.true(fs.existsSync("./output/Assets.xcassets/disk.imageset/Contents.json"));
+        t.true(fs.existsSync("./output/Assets.xcassets/disk.imageset/disk.jpg"));
+        t.true(fs.existsSync("./output/Assets.xcassets/disk.imageset/disk@2x.jpg"));
+        t.true(fs.existsSync("./output/Assets.xcassets/disk.imageset/disk@3x.jpg"));
 
     });
 
