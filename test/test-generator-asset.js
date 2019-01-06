@@ -4,41 +4,10 @@ import test from 'ava';
 let testutil = require("../testutil/testutil");
 
 var AssetGenerator = require("../func/generator-asset");
-// var supportCleaner = require("./test-support/_support-cleaner");
 
 var path = require("path");
 var fs = require("fs");
 var fse = require("fs-extra");
-
-// function clean() {
-//
-//     return supportCleaner.cleanSupportDir([
-//         {
-//             "cwd" : path.join(__dirname, "test-support/test-generator-asset/generateImageSetFolder"),
-//             "dir" : "./output/Assets.xcassets/"
-//         },
-//         {
-//             "cwd" : path.join(__dirname, "test-support/test-generator-asset/generateImageSetImages"),
-//             "dir" : "./output/Assets.xcassets/"
-//         },
-//         {
-//             "cwd" : path.join(__dirname, "test-support/test-generator-asset/startGenerateImages"),
-//             "dir" : "./output/Assets.xcassets/"
-//         }
-//     ]);
-// }
-
-// test.before(async t => {
-//
-//     await clean().then(function(){ });
-//
-// });
-//
-// test.after(async t => {
-//
-//     await clean().then(function(){ });
-//
-// });
 
 test.before("create working dir", t => {
 

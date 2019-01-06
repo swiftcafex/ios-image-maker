@@ -33,6 +33,7 @@ IconGenerator.prototype.generateIconSetFolder = function(assetPath, iconSetName)
 
 };
 
+
 IconGenerator.prototype.generateAppIconSetImage = function(sourceImagePath, assetFolder) {
 
     var images = iconTemplate;
@@ -89,7 +90,9 @@ IconGenerator.prototype.startGenerateIcons = function(sourcePath, destPath) {
         }).then(function (taskList) {
 
             Promise.all(taskList).then(function(){
+
                 resolve();
+
             });
 
         });
