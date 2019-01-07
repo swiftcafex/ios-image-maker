@@ -6,10 +6,11 @@ import test from 'ava';
 let testutil = require("../testutil/testutil");
 let commandInit = require("../func/command-init");
 
-var Config = require("../config");
+let Config = require("../config");
 
-var path = require("path");
-var fs = require("fs");
+let path = require("path");
+let fs = require("fs");
+let fse = require("fs-extra");
 
 
 test.before("create working dir", t => {
@@ -25,6 +26,31 @@ test.after.always("clean working dir", t => {
 });
 
 
+test.serial("do init", t => {
+
+    testutil.createAndChangeToSubDirectory("do-init");
+
+    // create project files
+    let dirname = "./test.xcodeproj";
+    fs.mkdirSync(dirname);
+
+    let sourceProjPath = testutil.getSupportFilePath("sample-project.pbxproj");
+
+
+    let filename = "project.pbxproj";
+    let destProjectPath = path.join(dirname, filename);
+
+    fse.copySync(sourceProjPath, destProjectPath);
+
+    commandInit.doInit();
+
+    t.true(fs.existsSync("./image-config.json"));
+    t.true(fs.existsSync(commandInit.defaultSourceDirectory));
+    t.true(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultAssetName)));
+    t.true(fs.existsSync(path.join(commandInit.defaultSourceDirectory, commandInit.defaultIconName)));
+
+});
+
 test.serial("find asset folder path", t => {
 
     t.plan(1);
@@ -32,10 +58,10 @@ test.serial("find asset folder path", t => {
     testutil.createAndChangeToSubDirectory(subdir);
 
     // create project files
-    var dirname = "./test.xcodeproj";
+    let dirname = "./test.xcodeproj";
     fs.mkdirSync(dirname);
 
-    var filename = "project.pbxproj"
+    let filename = "project.pbxproj";
     fs.writeFileSync(path.join(dirname, filename));
 
     let projFilePath = testutil.getSupportFilePath("sample-project.pbxproj");

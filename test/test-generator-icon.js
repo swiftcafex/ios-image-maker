@@ -11,39 +11,6 @@ var fse = require("fs-extra");
 var iconTemplate = require("../func/app-icon-template");
 
 
-// var supportCleaner = require("./test-support/_support-cleaner");
-//
-// function clean() {
-//
-//     return supportCleaner.cleanSupportDir([
-//         {
-//             "cwd" : path.join(__dirname, "test-support/test-generator-icon/generateIconSetFolder"),
-//             "dir" : "./output/Assets.xcassets/"
-//         },
-//         {
-//             "cwd" : path.join(__dirname, "test-support/test-generator-icon/generateAppIconSetImage"),
-//             "dir" : "./output/Assets.xcassets/"
-//         },
-//         {
-//             "cwd" : path.join(__dirname, "test-support/test-generator-icon/startGenerateIcons"),
-//             "dir" : "./output/Assets.xcassets/"
-//         }
-//     ]);
-// }
-//
-// test.before(async t => {
-//
-//     await clean().then(function(){ });
-//
-// });
-//
-// test.after(async t => {
-//
-//     await clean().then(function(){ });
-//
-// });
-
-
 test.before("create working dir", t => {
 
     testutil.createAndChangeToWorkingDirectory("test-generator-icon");
@@ -91,7 +58,7 @@ test.serial('generate icon asset image',async t => {
 
 
     // test
-    var generator = new IconGenerator();
+    let generator = new IconGenerator();
 
     t.false(fs.existsSync("./output/Assets.xcassets/cloud.appiconset"));
     t.false(fs.existsSync("./output/Assets.xcassets/cloud.appiconset/Contents.json"));
@@ -128,12 +95,173 @@ test.serial('AssetGenerator.startGenerateIcons',async t => {
     let sourcePath = path.join(sourceFolderName,files[0]);
 
 
-    var generator = new IconGenerator();
+    let generator = new IconGenerator();
 
-    generator.startGenerateIcons("./source", "./output/Assets.xcassets").then(function(){
+    await generator.startGenerateIcons(sourceFolderName, "./output/Assets.xcassets").then(function(){
+
+        console.log("generatae icon finished. ");
+        t.true(fs.existsSync("./output/Assets.xcassets/cloud.appiconset"));
+        t.true(fs.existsSync("./output/Assets.xcassets/cloud.appiconset/Contents.json"));
+
+        let expectedResult = {
+
+            "images": [
+                {
+                    "size": "20x20",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-20x20@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "20x20",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-20x20@3x.png",
+                    "scale": "3x"
+                },
+                {
+                    "size": "29x29",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-29x29@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "size": "29x29",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-29x29@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "29x29",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-29x29@3x.png",
+                    "scale": "3x"
+                },
+                {
+                    "size": "40x40",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-40x40@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "40x40",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-40x40@3x.png",
+                    "scale": "3x"
+                },
+                {
+                    "size": "57x57",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-57x57@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "idiom": "iphone",
+                    "size": "57x57",
+                    "scale": "2x",
+                    "filename": "Icon-App-57x57@2x.png"
+                },
+                {
+                    "size": "60x60",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-60x60@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "60x60",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-60x60@3x.png",
+                    "scale": "3x"
+                },
+                {
+                    "size": "20x20",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-20x20@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "size": "20x20",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-20x20@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "29x29",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-29x29@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "size": "29x29",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-29x29@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "40x40",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-40x40@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "size": "40x40",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-40x40@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "76x76",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-76x76@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "size": "76x76",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-76x76@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "83.5x83.5",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-83.5x83.5@2x.png",
+                    "scale": "2x"
+                },
+                {
+                    "size": "40x40",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-40x40@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "size": "60x60",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-60x60@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "size": "76x76",
+                    "idiom": "iphone",
+                    "filename": "Icon-App-76x76@1x.png",
+                    "scale": "1x"
+                },
+                {
+                    "size": "76x76",
+                    "idiom": "ipad",
+                    "filename": "Icon-App-76x76@3x.png",
+                    "scale": "3x"
+                }
+            ],
+            "info": {
+                "version": 1,
+                "author": "xcode"
+            }
+        };
+
+        let fileContent = fs.readFileSync("./output/Assets.xcassets/cloud.appiconset/Contents.json", "utf-8");
+
+        t.is(JSON.stringify(JSON.parse(fileContent)),JSON.stringify(expectedResult));
 
     });
 
-    t.pass();
 
 });
