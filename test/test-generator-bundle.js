@@ -1,4 +1,4 @@
-
+"use strict";
 import test from 'ava';
 
 var BundleGenerator = require("../func/generator-bundle");

@@ -1,3 +1,5 @@
+"use strict";
+
 var Generator = require('./generator');
 var fs = require('fs.extra');
 var path = require('path');

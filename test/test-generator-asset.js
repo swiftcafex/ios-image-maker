@@ -1,4 +1,4 @@
-
+"use strict";
 import test from 'ava';
 
 let testutil = require("../testutil/testutil");

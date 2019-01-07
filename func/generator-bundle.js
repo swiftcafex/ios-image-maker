@@ -1,3 +1,5 @@
+"use strict";
+
 var Generator = require('./generator');
 
 var sizeOf = require('image-size')
